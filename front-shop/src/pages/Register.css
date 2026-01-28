@@ -1,0 +1,71 @@
+.register-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.register-logo{
+    font-size : 35px;
+    font-weight : 700;
+}
+
+.register-slot{
+    /* border : 1px solid red; */
+    width : 760px;
+    flex-direction: column;
+}
+
+.register-extra-slot{
+    /* border : 1px solid green; */
+    display : flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-input{
+    width : 300px;
+    height : 30px;
+    margin : 5px;
+    font-size : 18px;
+}
+
+.register-button-user-type{
+    width : 80px;
+    height : 35px;
+    background-color: #85D1D4;
+    border : 1px solid #85D1D4;
+    font-size : 20px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-left : 8px;
+    margin-right : 8px;
+    margin-top : 10px;
+    border-radius : 3px;
+    font-weight: 600;
+}
+
+.register-button-user-type:hover{
+    background-color: #85bbd4;
+}
+
+.register-confirm-button{
+    width : 300px;
+    height :  40px;
+    background-color: #2AB9E0;
+    display : flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    font-size : 20px;
+    font-weight : 600;
+    border-radius : 3px;
+}
+
+.register-confirm-button:hover {
+    background-color: #2a97e0;
+}
