@@ -6,11 +6,13 @@ function Login() {
 
 
   const navigate = useNavigate();
+  const [idLogin,setIdLogin] = useState("");
+  const [pwLogin,setPwLogin] = useState("");
 
   const goToRegister = () => {
     navigate("/register");
   }
-  
+
   return (
     <div className="login-wrapper">
       <div className="login-logo">로그인</div>
