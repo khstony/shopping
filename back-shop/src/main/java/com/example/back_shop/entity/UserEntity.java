@@ -1,4 +1,4 @@
-package com.example.back.entity;
+package com.example.back_shop.entity;
 
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -16,7 +16,7 @@ import lombok.*;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Long;
+    private Long id;
 
     @Column(name = "user_id", nullable = false, unique = true)
     private String userId;

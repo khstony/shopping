@@ -1,15 +1,21 @@
-package com.example.back.service;
+package com.example.back_shop.service;
 
-import com.example.back.entity.UserEntity;
-import com.example.back.repository.UserRepository;
-import com.example.back.dto.UserRegisterRequestDto;
+import com.example.back_shop.entity.*;
+import com.example.back_shop.repository.UserRepository;
+import com.example.back_shop.dto.UserRegisterRequestDto;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.stereotype.Service;
+import org.springframework.security.crypto.password.PasswordEncoder;
+//import com.example.back_shop.config.*;
+
+import lombok.*;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    // private final JwtUtil JwtUtil;
 
     // 회원가입
     @Transactional
@@ -32,7 +38,7 @@ public class UserService {
                 .address(request.getAddress())
                 .phone(request.getPhone())
                 .userType(type)
-                .userStatus(UserStatus.NORMAL)
+                .status(UserStatus.NORMAL)
                 .build();
 
         userRepository.save(user);

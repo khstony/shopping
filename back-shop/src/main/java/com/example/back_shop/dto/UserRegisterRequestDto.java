@@ -1,8 +1,7 @@
-package com.example.back.dto;
-
-import org.springframework.web.bind.annotation.SessionAttributes;
+package com.example.back_shop.dto;
 
 import lombok.*;
+import com.example.back_shop.entity.*;
 
 @Getter
 @Setter
