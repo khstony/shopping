@@ -24,7 +24,8 @@ public class SecurityConfig {
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html",
-                                "/api/users/register")
+                                "/api/users/register",
+                                "/api/users/login")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable()); // 로그인 페이지 비활성화
