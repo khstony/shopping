@@ -19,13 +19,17 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
+                .cors(cors -> {
+                })
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
                                 "/swagger-ui.html",
                                 "/api/users/register",
-                                "/api/users/login")
+                                "/api/users/login",
+                                "/users/login",
+                                "/users/register")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable()); // 로그인 페이지 비활성화

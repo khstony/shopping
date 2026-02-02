@@ -69,3 +69,8 @@
 .register-confirm-button:hover {
     background-color: #2a97e0;
 }
+
+.button-selected{
+    background-color: #517e80;
+    color : white;
+}

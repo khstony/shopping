@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import Login from './pages/Login';
 import Register from './pages/Register'
+import MainPage from './pages/MainPage'
 import './App.css'
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path = "/" element = {<Login />}/>
+        <Route path = "/" element = {<Login/>}/>
         <Route path = "/register" element = {<Register/>}/>
+        <Route path = "/main" element = {<MainPage/>}/>  
       </Routes>
     </BrowserRouter>
   )
