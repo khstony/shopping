@@ -1,0 +1,64 @@
+.cell-wrapper{
+    width :230px;
+    height: 320px;
+    background-color: white;
+    border : 1px solid #d4d4d4;
+    display : flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+
+.cell-image{
+    width : 230px;
+    height : 200px;
+    aspect-ratio: 1 / 1; 
+    background-color: pink;
+}
+
+.cell-product-name{
+    text-align: left;
+    font-size : 15px;
+    font-weight: 700;
+    margin-top : 5px;
+}
+
+.cell-product-price{
+    font-size : 24px;
+    text-align: left;
+    
+}
+
+.font-discount-highlight{
+    color : red;
+}
+
+.pre-price-tag{
+    font-size : 15px;
+    font-style :italic;
+    text-decoration: line-through;
+    text-align: left;
+}
+
+.discount-tag{
+    font-size : 15px;
+    text-align: left;
+    color : red;
+}
+
+.sold-out-tag{
+    font-size : 15px;
+    text-align: left;
+    color : red
+}
+
+.sold-out-hightlight{
+    
+}
+
+.price-row{
+display: flex;
+  align-items: center;
+  gap: 8px;
+}
