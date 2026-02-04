@@ -28,6 +28,7 @@
     align-items : center;
     justify-content: center;
     display : flex;
+    z-index : 1000;
 }
 
 .main-header-menubox{

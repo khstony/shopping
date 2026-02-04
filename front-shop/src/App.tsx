@@ -5,6 +5,8 @@ import viteLogo from '/vite.svg'
 import Login from './pages/Login';
 import Register from './pages/Register'
 import MainPage from './pages/MainPage'
+import SellerPage from './pages/Sellerpage';
+import OfferInfo from './pages/OfferInfo';
 import './App.css'
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
         <Route path = "/" element = {<Login/>}/>
         <Route path = "/register" element = {<Register/>}/>
         <Route path = "/main" element = {<MainPage/>}/>  
+        <Route path = "/seller" element = {<SellerPage/>}/>
+        <Route path = "/offer" element = {<OfferInfo/>}/>
       </Routes>
     </BrowserRouter>
   )

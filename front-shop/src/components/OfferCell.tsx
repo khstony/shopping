@@ -19,8 +19,7 @@ function OfferCell(props: Offer) {
   } = props;
 
   const isSoldOut = stock===0;
-  const discountRate = Number(discount_rate);
-  const isDiscounted = discountRate > 0;
+  const isDiscounted = discount_rate > 0;
   const actualPrice = product_price * (1 - discount_rate/100);
 
 
