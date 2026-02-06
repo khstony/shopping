@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
-import "./MainPage.css"
 import "./OfferInfo.css"
 import type {Offer} from "../types/offer";
 import { testOfferDetail } from '../testdata/testOfferDetail';

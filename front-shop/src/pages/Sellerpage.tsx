@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import "./Mainpage.css";
 import {testshop} from "../testdata/testshop";
 import type { Offer } from "../types/offer"
-import OfferCell from "../components/OfferCell";
+import SellerOfferCell from "../components/SellerOfferCell"
+import "./Sellerpage.css"
 
 function SellerPage() {
  
@@ -27,14 +27,14 @@ function SellerPage() {
           <div className = "main-search-button">검색</div>
         </div>
       </div>
-      <div className = "main-center-zone">
+      <div className = "seller-main-center-zone">
         {offerList.map((offer) => (
-          <OfferCell
+          <SellerOfferCell
             key = {offer.id}
             {...offer}
             
           />
-        ))}
+        ))} 
       </div>
     </div>
 

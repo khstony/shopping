@@ -1,0 +1,99 @@
+.cell-seller-wrapper{
+    border : 1px solid red;
+    display : flex;
+    width : 800px;
+    height : 200px;
+    align-items: center;
+}
+
+.cell-seller-image{
+    width : 280px;
+    height : 170px;
+    background-color: pink;
+    border : 1px solid gray;
+    margin : 10px;
+}
+
+.cell-seller-right{
+    border : 1px solid green;
+    width : 100%;
+    height: 100%;
+}
+
+.cell-seller-product-name{
+    border : 1px solid blue;
+    text-align: left;
+    font-size : 20px;
+    font-weight: 700;
+    padding : 10px; 
+}
+
+.cell-seller-name-price-box{
+    border : 1px solid red;
+    display: flex;
+}
+
+.cell-seller-price-discount-box{
+    padding : 10px;
+    flex-direction: column;
+    display : flex;
+    border : 1px solid yellow;
+    margin-left : auto;
+}
+
+.cell-seller-price{
+    font-size : 20px;
+    font-weight: 900;
+    text-align: right;;
+}
+
+.cell-seller-discount-info{
+    display : flex;
+}
+
+.cell-seller-prediscount-price{
+    color : #a0a0a0;
+    font-weight : 700;
+    text-decoration: line-through;
+    margin-right : 10px
+}
+
+.cell-seller-discount-rate{
+    color : red;
+    font-weight: 600;
+}
+
+.cell-seller-stock{
+    text-align: right;
+    font-size : 15px;
+    font-weight: 500;
+}
+
+.cell-seller-discount-tag{
+    color : red;
+}
+
+.cell-seller-bottom{
+    display: flex;
+    border : 1px solid red;
+}
+
+.cell-seller-button-section{
+    display : flex;
+    margin-left : auto;
+}
+
+.cell-seller-button{
+    width : 70px;
+    height : 30px;
+    font-size : 18px;
+    background-color:#2AB9E0;
+    font-weight : 700;
+    margin : 10px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border : 2px solid #2a97e0;
+    border-radius: 3px;
+}
