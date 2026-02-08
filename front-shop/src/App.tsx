@@ -7,6 +7,7 @@ import Register from './pages/Register'
 import MainPage from './pages/MainPage'
 import SellerPage from './pages/Sellerpage';
 import OfferInfo from './pages/OfferInfo';
+import Upload from './pages/Upload';
 import './App.css'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path = "/main" element = {<MainPage/>}/>  
         <Route path = "/seller" element = {<SellerPage/>}/>
         <Route path = "/offer" element = {<OfferInfo/>}/>
+        <Route path = "/upload" element = {<Upload/>}/>
       </Routes>
     </BrowserRouter>
   )
