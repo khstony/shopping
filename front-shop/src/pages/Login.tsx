@@ -24,7 +24,7 @@ function Login() {
           
             const token = response.data.token;
             const idKey = response.data.id;
-            localStorage.setItem("token", token);
+            localStorage.setItem("accessToken", token);
             localStorage.setItem("userId", idLogin);
             localStorage.setItem("id", idKey);
             console.log(response);

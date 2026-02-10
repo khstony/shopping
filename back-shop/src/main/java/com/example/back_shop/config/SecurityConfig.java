@@ -29,7 +29,9 @@ public class SecurityConfig {
                                 "/api/users/register",
                                 "/api/users/login",
                                 "/users/login",
-                                "/users/register")
+                                "/users/register",
+                                "/offers/upload",
+                                "/api/offers/upload")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable()); // 로그인 페이지 비활성화
