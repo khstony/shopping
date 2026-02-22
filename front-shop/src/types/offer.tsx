@@ -1,10 +1,10 @@
 export interface Offer {
-  id: number;
+  offerId: number;
   uploader: number;
-  product_name: string;
-  product_image: string;
-  product_desc: string;
-  product_price: number;
-  discount_rate: number;
+  productName: string;
+  productImage: string;
+  productDesc: string;
+  productPrice: number;
+  discountRate: number;
   stock: number;
 }

@@ -11,9 +11,12 @@ import io.swagger.v3.oas.models.media.MediaType;
 import com.example.back_shop.dto.*;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/offers")
@@ -27,6 +30,11 @@ public class OfferController {
             @RequestParam("image") MultipartFile imageFile) throws IOException {
         OfferResponseDto response = offerService.upload(request, imageFile);
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/load")
+    public ResponseEntity<List<OfferResponseDto>> loadAll() {
+        return ResponseEntity.ok(offerService.loadAll());
     }
 
 }

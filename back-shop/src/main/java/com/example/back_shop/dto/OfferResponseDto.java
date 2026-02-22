@@ -19,6 +19,6 @@ public class OfferResponseDto {
     private int stock;
 
     private Long uploaderId;
-
+    private int discountRate;
     private String productImage;
 }

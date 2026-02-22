@@ -3,6 +3,7 @@ import "./Mainpage.css";
 import {testshop} from "../testdata/testshop";
 import type { Offer } from "../types/offer"
 import OfferCell from "../components/OfferCell";
+import api from "../api/axiosInstance";
 
 function MainPage() {
  
@@ -10,8 +11,16 @@ function MainPage() {
 
   const [offerList, setOfferList] = useState<Offer[]>([]);
 
-  const fetchOffer = () =>{
-    setOfferList(testshop);
+  const fetchOffer = async() =>{
+
+    try{
+      const res = await api.get('offers/load');
+      setOfferList(res.data);
+      console.log("오퍼 패치됨", res.data);
+    } catch (err){
+      console.error("에러", err);
+    }
+    
   }
 
   useEffect(() => {
@@ -30,7 +39,7 @@ function MainPage() {
       <div className = "main-center-zone">
         {offerList.map((offer) => (
           <OfferCell
-            key = {offer.id}
+            key = {offer.offerId}
             {...offer}
             
           />

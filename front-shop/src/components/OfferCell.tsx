@@ -8,30 +8,36 @@ type OfferCellProps = Offer;
 
 function OfferCell(props: Offer) {
   const {
-    id,
+    offerId,
     uploader,
-    product_name,
-    product_image,
-    product_desc,
-    product_price,
-    discount_rate,
+    productName,
+    productImage,
+    productDesc,
+    productPrice,
+    discountRate,
     stock,
   } = props;
 
   const isSoldOut = stock===0;
-  const isDiscounted = discount_rate > 0;
-  const actualPrice = product_price * (1 - discount_rate/100);
+  const isDiscounted = discountRate > 0;
+  const actualPrice = productPrice * (1 - discountRate/100);
 
 
   return (
     <div className="cell-wrapper">
-        <div className = "cell-image"></div>
-        <div className = {`cell-product-name`}>{product_name} {stock}개</div>
+        <div className = "cell-image">
+          <img
+      src={productImage}
+      alt={productName}
+      width="200"
+    />
+        </div>
+        <div className = {`cell-product-name`}>{productName} {stock}개 {discountRate}</div>
         
         <div className = {`cell-product-price ${isDiscounted && !isSoldOut? "font-discount-highlight" : ""} ${isSoldOut? "sold-out-hightlight" : ""}` } >{actualPrice}원</div>
         <div className = "price-row">
-            {discount_rate > 0 &&(<div className = "pre-price-tag">{product_price}원</div>)}
-            {discount_rate > 0 &&(<div className = "discount-tag">{discount_rate}% 할인</div>)}
+            {discountRate > 0 &&(<div className = "pre-price-tag">{productPrice}원</div>)}
+            {discountRate > 0 &&(<div className = "discount-tag">{discountRate}% 할인</div>)}
         </div>
         
         {isSoldOut && (<div className = "sold-out-tag">품절</div>)}
