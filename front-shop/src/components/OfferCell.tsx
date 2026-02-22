@@ -26,10 +26,11 @@ function OfferCell(props: Offer) {
   return (
     <div className="cell-wrapper">
         <div className = "cell-image">
-          <img
+          <img className='cell-image-inner'
+         
       src={productImage}
       alt={productName}
-      width="200"
+      
     />
         </div>
         <div className = {`cell-product-name`}>{productName} {stock}개 {discountRate}</div>
