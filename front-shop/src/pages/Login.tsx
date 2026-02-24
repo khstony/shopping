@@ -11,6 +11,7 @@ function Login() {
   const [pwLogin,setPwLogin] = useState("");
 
   const goToRegister = () => {
+    
     navigate("/register");
   }
 

@@ -78,4 +78,39 @@ public class OfferService {
                                 ))
                                 .collect(Collectors.toList());
         }
+
+        public List<OfferResponseDto> loadUploader(Long uploaderId) {
+                List<OfferEntity> offers = offerRepository.findByUploaderId(uploaderId);
+
+                return offers.stream()
+                                .map(offer -> new OfferResponseDto(
+                                                offer.getId(),
+                                                offer.getProductName(),
+                                                offer.getProductDesc(),
+                                                offer.getProductPrice(),
+                                                offer.getStock(),
+                                                offer.getUploader().getId(),
+                                                offer.getDiscountRate(),
+                                                imageUrl + offer.getProductImage()
+
+                                ))
+                                .collect(Collectors.toList());
+        }
+
+        public OfferResponseDto loadOffer(Long offerId) {
+                OfferEntity offer = offerRepository.findById(offerId)
+                                .orElseThrow(() -> new IllegalArgumentException("탐색 실패"));
+
+                return new OfferResponseDto(
+                                offer.getId(),
+                                offer.getProductName(),
+                                offer.getProductDesc(),
+                                offer.getProductPrice(),
+                                offer.getStock(),
+                                offer.getUploader().getId(),
+                                offer.getDiscountRate(),
+                                imageUrl + offer.getProductImage());
+
+        }
+
 }

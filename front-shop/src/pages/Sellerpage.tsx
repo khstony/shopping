@@ -2,16 +2,25 @@ import React, { useEffect, useState, useRef } from 'react';
 import {testshop} from "../testdata/testshop";
 import type { Offer } from "../types/offer"
 import SellerOfferCell from "../components/SellerOfferCell"
-import "./Sellerpage.css"
+import "./Sellerpage.css";
+import api from "../api/axiosInstance";
 
 function SellerPage() {
  
 
 
   const [offerList, setOfferList] = useState<Offer[]>([]);
+  const idKey = localStorage.getItem("id");
+  const fetchOffer = async() =>{
 
-  const fetchOffer = () =>{
-    setOfferList(testshop);
+    try{
+      const res = await api.get(`offers/load/uploader/${idKey}`);
+      setOfferList(res.data);
+      console.log("오퍼 패치됨", res.data);
+    } catch (err){
+      console.error("에러", err);
+    }
+    
   }
 
   useEffect(() => {
@@ -30,7 +39,7 @@ function SellerPage() {
       <div className = "seller-main-center-zone">
         {offerList.map((offer) => (
           <SellerOfferCell
-            key = {offer.id}
+            key = {offer.offerId}
             {...offer}
             
           />

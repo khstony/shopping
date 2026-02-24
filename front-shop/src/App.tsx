@@ -19,7 +19,7 @@ function App() {
         <Route path = "/register" element = {<Register/>}/>
         <Route path = "/main" element = {<MainPage/>}/>  
         <Route path = "/seller" element = {<SellerPage/>}/>
-        <Route path = "/offer" element = {<OfferInfo/>}/>
+        <Route path = "/offer/:id" element = {<OfferInfo/>}/>
         <Route path = "/upload" element = {<Upload/>}/>
       </Routes>
     </BrowserRouter>

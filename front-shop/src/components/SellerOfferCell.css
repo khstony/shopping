@@ -12,6 +12,9 @@
     background-color: pink;
     border : 1px solid gray;
     margin : 10px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cell-seller-right{
@@ -101,4 +104,11 @@
 .cell-seller-button:hover{
     background-color: #2a97e0;
     cursor: pointer;
+}
+
+.cell-seller-image-inner{
+    width : 95%;
+    height : 95%;
+    aspect-ratio: 1 / 1; 
+    background-color: pink;
 }

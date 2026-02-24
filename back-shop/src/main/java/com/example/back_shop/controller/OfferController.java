@@ -15,8 +15,6 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/offers")
@@ -35,6 +33,17 @@ public class OfferController {
     @GetMapping("/load")
     public ResponseEntity<List<OfferResponseDto>> loadAll() {
         return ResponseEntity.ok(offerService.loadAll());
+    }
+
+    @GetMapping("/load/uploader/{id}")
+    public ResponseEntity<List<OfferResponseDto>> loadByUploader(@PathVariable Long id) {
+
+        return ResponseEntity.ok(offerService.loadUploader(id));
+    }
+
+    @GetMapping("/load/single/{id}")
+    public ResponseEntity<OfferResponseDto> loadSingleOffer(@PathVariable Long id) {
+        return ResponseEntity.ok(offerService.loadOffer(id));
     }
 
 }

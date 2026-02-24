@@ -33,8 +33,9 @@ public class SecurityConfig {
                                 "/users/register",
                                 "/offers/upload",
                                 "/api/offers/upload",
-                                "/offers/load",
-                                "/api/offers/load")
+                                "/offers/load/**",
+
+                                "/api/offers/load/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable()); // 로그인 페이지 비활성화

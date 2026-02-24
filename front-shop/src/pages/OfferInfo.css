@@ -73,6 +73,9 @@
     background-color: pink;
     aspect-ratio: 1 / 1; 
     position: relative;
+    display : flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .offer-extra-zone{
@@ -185,3 +188,12 @@
     background-color: #adadad;  
     opacity: 0.5;
 }
+
+.offer-image-inner{
+    width : 99%;
+    height : 99%;
+    aspect-ratio: 1 / 1; 
+    background-color: pink;
+}
+
+
