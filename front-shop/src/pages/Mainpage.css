@@ -65,3 +65,13 @@
     text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
     border-radius: 10px;
 }
+
+.main-cart-button{
+    width : 40px;
+    height : 40px;
+    background-color: red;
+    cursor : pointer;
+    margin-left : 100px;
+}
+
+
