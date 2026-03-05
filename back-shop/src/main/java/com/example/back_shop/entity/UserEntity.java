@@ -1,7 +1,5 @@
 package com.example.back_shop.entity;
 
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,9 +34,11 @@ public class UserEntity {
     @Column(name = "address", nullable = false)
     private String address;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "userType", nullable = false)
     private UserType userType;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private UserStatus status;
 

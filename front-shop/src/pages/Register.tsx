@@ -19,6 +19,10 @@ const registerConfirm = async () => {
     alert("구매자나 판매자 중에서 선택하세요");
     return;
   }
+  else if(!idRegister || !pwRegister || !nickRegister || !addressRegister || !phoneRegister || !emailRegister){
+    alert("모든 정보를 입력해야 합니다.")
+    return;
+  }
 
   try{
     const response = await api.post("/users/register", {
@@ -35,8 +39,8 @@ const registerConfirm = async () => {
     console.log(response);
     navigate("/");
   } catch(error){
-    console.error(error);
-    alert("에러 발생");
+    console.error(error.response?.data);
+    alert(error.response?.data.message)
   }
 };
 
