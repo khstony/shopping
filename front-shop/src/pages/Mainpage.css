@@ -5,19 +5,37 @@
   background-color: white;
   display : flex;
   justify-content: center;
+  flex-direction: row;
 }
 
 .main-center-zone{
-    width : 1000px;
+    width : 1100px;
     min-height : 100%;
     background-color: white;
     border : 1px solid #c4bfbf;
     margin-top : 100px;
+    display : flex;
+    flex-direction: column;
+}
+
+.multi-banner{
+    border : 2px solid red;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width : 100%;
+    position : relative;
+}
+
+.main-offer-list{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+    border : 1px solid none;
 }
+
 
 .main-header{
     width : 100%;
@@ -66,12 +84,5 @@
     border-radius: 10px;
 }
 
-.main-cart-button{
-    width : 40px;
-    height : 40px;
-    background-color: red;
-    cursor : pointer;
-    margin-left : 100px;
-}
 
 

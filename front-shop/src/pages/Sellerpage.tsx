@@ -37,13 +37,16 @@ function SellerPage() {
         </div>
       </div>
       <div className = "seller-main-center-zone">
-        {offerList.map((offer) => (
+        <div className = "seller-main-list">
+          {offerList.map((offer) => (
           <SellerOfferCell
             key = {offer.offerId}
             {...offer}
             
           />
         ))} 
+        </div>
+        
       </div>
     </div>
 

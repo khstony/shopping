@@ -16,8 +16,12 @@
     display: grid;
     gap: 20px;
     padding: 20px;
-    align-items: center;
+    align-content: flex-start;
     justify-content: center;
+}
+
+.seller-main-list{
+    
 }
 
 .main-header{

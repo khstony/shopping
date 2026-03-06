@@ -45,7 +45,7 @@ function OfferInfo() {
 
         </div>
 
-        <div className = "main-center-zone">
+        <div className = "offer-center-zone">
             <div className = "offer-image">
                 <img
                     className = "offer-image-inner"

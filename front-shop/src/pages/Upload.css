@@ -63,6 +63,8 @@ input[type = file] {
     display : flex;
     border: 1px solid blue;
     height : 10%;
+    align-items: center;
+    justify-content: center;
 }
 
 .upload-left-section{
@@ -179,7 +181,7 @@ input[type = file] {
 
 .upload-confirm{
     width : 300px;
-    height : 45 px;
+    height : 45px;
     font-size : 25px;
     background-color:#2AB9E0;
     font-weight : 700;

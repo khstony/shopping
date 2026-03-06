@@ -25,14 +25,21 @@ function Login() {
 
       const token = response.data.token;
       const idKey = response.data.id;
+      const userType = response.data.userType;
       localStorage.setItem("accessToken", token);
       localStorage.setItem("userId", idLogin);
       localStorage.setItem("id", idKey);
       console.log(response);
       if(response.data.userType == "BUYER"){
+        localStorage.setItem("userType", userType);
           navigate("/main");
       }
       else if(response.data.userType = "SELLER"){
+        localStorage.setItem("userType", userType);
+          navigate("/seller");
+      }
+      else if(response.data.userType = "ADMIN"){
+        localStorage.setItem("userType", userType);
           navigate("/seller");
       }
       alert("로그인");

@@ -6,7 +6,8 @@ import OfferCell from "../components/OfferCell";
 import api from "../api/axiosInstance";
 import logo from "../assets/logo-transparent.png"
 import { useNavigate } from 'react-router-dom';
-import Logo from "../components/logo";
+import Logo from "../components/Logo";
+import Banner from '../components/Banner';
 
 function MainPage() {
  
@@ -44,16 +45,22 @@ function MainPage() {
           <input className = "main-searchbox"/>
           <div className = "main-search-button">검색</div>
         </div>
-        <div className = "main-cart-button">장</div>
+        
       </div>
       <div className = "main-center-zone">
-        {offerList.map((offer) => (
+        <div className = "multi-banner">
+          <Banner/>
+        </div>
+        <div className = "main-offer-list">
+          {offerList.map((offer) => (
           <OfferCell
             key = {offer.offerId}
             {...offer}
             
           />
         ))}
+        </div>
+        
       </div>
     </div>
 

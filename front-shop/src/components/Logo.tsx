@@ -8,20 +8,24 @@ import logo from "../assets/logo-transparent.png"
 
 
 
-function Logo(){
-
+function Logo() {
+  const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
   const gotoMain = () => {
-    navigate("/main");
+    if (userType == "buyer")
+      navigate("/main");
+    else if (userType == "seller") {
+      navigate("/seller")
+    }
   }
   return (
-    <div className = "main-logo-button" onClick={gotoMain}>
-          <img
-              className="main-logo"
-              src={logo}
-              alt="기"
-            />
-        </div>
+    <div className="main-logo-button" onClick={gotoMain}>
+      <img
+        className="main-logo"
+        src={logo}
+        alt="기"
+      />
+    </div>
   )
 
 }

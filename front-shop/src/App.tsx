@@ -8,6 +8,7 @@ import MainPage from './pages/MainPage'
 import SellerPage from './pages/Sellerpage';
 import OfferInfo from './pages/OfferInfo';
 import Upload from './pages/Upload';
+import Cart from './pages/Cart';
 import './App.css'
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path = "/seller" element = {<SellerPage/>}/>
         <Route path = "/offer/:id" element = {<OfferInfo/>}/>
         <Route path = "/upload" element = {<Upload/>}/>
+        <Route path = "/cart" element = {<Cart/>}/>
       </Routes>
     </BrowserRouter>
   )
