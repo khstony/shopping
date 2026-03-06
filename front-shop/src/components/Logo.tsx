@@ -12,9 +12,11 @@ function Logo() {
   const userType = localStorage.getItem("userType");
   const navigate = useNavigate();
   const gotoMain = () => {
-    if (userType == "buyer")
+    console.log("btn cliked");
+    console.log(userType);
+    if (userType == "BUYER")
       navigate("/main");
-    else if (userType == "seller") {
+    else if (userType == "SELLER") {
       navigate("/seller")
     }
   }

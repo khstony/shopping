@@ -4,7 +4,8 @@ import "./OfferInfo.css"
 import type {Offer} from "../types/offer";
 import { testOfferDetail } from '../testdata/testOfferDetail';
 import api from "../api/axiosInstance";
-import Logo from "../components/logo";
+import Logo from "../components/Logo";
+import Header from "../components/Header";
 function OfferInfo() {
 
   const {id} = useParams();
@@ -35,15 +36,7 @@ function OfferInfo() {
 
   return (
     <div className="main-wrapper">
-        <div className="main-header">
-            <Logo/>
-            <div className='main-header-menubox'>
-                <input className = "main-searchbox"/>
-                <div className = "main-search-button">검색</div>
-                
-            </div>
-
-        </div>
+        <Header/>
 
         <div className = "offer-center-zone">
             <div className = "offer-image">

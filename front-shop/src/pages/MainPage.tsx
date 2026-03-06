@@ -8,6 +8,7 @@ import logo from "../assets/logo-transparent.png"
 import { useNavigate } from 'react-router-dom';
 import Logo from "../components/Logo";
 import Banner from '../components/Banner';
+import Header from '../components/Header';
 
 function MainPage() {
  
@@ -38,15 +39,7 @@ function MainPage() {
   }
   return (
     <div className = "main-wrapper">
-      <div className = "main-header">
-        <Logo/>
-        <div className = "main-header-menubox">
-          
-          <input className = "main-searchbox"/>
-          <div className = "main-search-button">검색</div>
-        </div>
-        
-      </div>
+      <Header/>
       <div className = "main-center-zone">
         <div className = "multi-banner">
           <Banner/>
