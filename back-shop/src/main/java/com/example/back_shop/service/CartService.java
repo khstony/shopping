@@ -1,11 +1,13 @@
 package com.example.back_shop.service;
 
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 
 import com.example.back_shop.repository.*;
-import com.example.back_shop.dto.CartRequestDto;
-import com.example.back_shop.dto.CartResponseDto;
+import com.example.back_shop.dto.*;
+
 import com.example.back_shop.entity.*;
 
 import jakarta.transaction.Transactional;
@@ -25,7 +27,7 @@ public class CartService {
                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
         UserEntity user = userRepository.findById(request.getOwnerId())
-                .orElseThrow(() -> new IllegalArgumentException("사용자가 없습니다."));
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다."));
 
         if (cartRepository.findByOwnerIdAndOfferId(user, offer).isPresent()) {
             throw new IllegalArgumentException("이미 장바구니에 담은 상품입니다.");
@@ -42,6 +44,60 @@ public class CartService {
                 .build();
 
         cartRepository.save(cart);
+
+        return CartResponseDto.builder()
+                .Id(cart.getId())
+                .ownerId(cart.getOwnerId().getId())
+                .offerId(cart.getOfferId().getId())
+                .quantity(cart.getQuantity())
+                .build();
+    }
+
+    @Transactional
+    public CartResponseDto addOne(CartUpdateRequestDto request) {
+        System.out.println("로그");
+        System.out.println(request);
+        OfferEntity offer = offerRepository.findById(request.getOfferId())
+                .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+
+        UserEntity user = userRepository.findById(request.getOwnerId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다."));
+
+        CartEntity cart = cartRepository.findById(request.getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 장바구니 항목 무효."));
+
+        if (offer.getStock() < request.getQuantity() + 1) {
+            throw new IllegalArgumentException("더이상 추가로 담을 수 없습니다.");
+        }
+
+        cart.setQuantity(cart.getQuantity() + 1);
+
+        return CartResponseDto.builder()
+                .Id(cart.getId())
+                .ownerId(cart.getOwnerId().getId())
+                .offerId(cart.getOfferId().getId())
+                .quantity(cart.getQuantity())
+                .build();
+    }
+
+    @Transactional
+    public CartResponseDto minusOne(CartUpdateRequestDto request) {
+        System.out.println("로그");
+        System.out.println(request);
+        OfferEntity offer = offerRepository.findById(request.getOfferId())
+                .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+
+        UserEntity user = userRepository.findById(request.getOwnerId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 사용자가 없습니다."));
+
+        CartEntity cart = cartRepository.findById(request.getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 장바구니 항목 무효."));
+
+        if (request.getQuantity() == 1) {
+            throw new IllegalArgumentException("더이상 줄일 수 없습니다.");
+        }
+
+        cart.setQuantity(cart.getQuantity() - 1);
 
         return CartResponseDto.builder()
                 .Id(cart.getId())
