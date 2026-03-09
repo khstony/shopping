@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
@@ -58,6 +59,14 @@ public class CartController {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(Map.of("message", e.getMessage()));
         }
+    }
+
+    @DeleteMapping("/delete/{cartId}")
+    public ResponseEntity<Void> cartDelete(@PathVariable Long cartId) {
+
+        cartService.cartRemove(cartId);
+        return ResponseEntity.ok().build();
+
     }
 
 }

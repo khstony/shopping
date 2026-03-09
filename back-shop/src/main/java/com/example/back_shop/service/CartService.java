@@ -94,7 +94,7 @@ public class CartService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 장바구니 항목 무효."));
 
         if (request.getQuantity() == 1) {
-            throw new IllegalArgumentException("더이상 줄일 수 없습니다.");
+            throw new IllegalArgumentException("더이상 줄일 수 없습니다. 대신 삭제 버튼을 이용하세요.");
         }
 
         cart.setQuantity(cart.getQuantity() - 1);
@@ -105,6 +105,13 @@ public class CartService {
                 .offerId(cart.getOfferId().getId())
                 .quantity(cart.getQuantity())
                 .build();
+    }
+
+    @Transactional
+    public void cartRemove(Long cartId) {
+
+        cartRepository.deleteById(cartId);
+
     }
 
 }
