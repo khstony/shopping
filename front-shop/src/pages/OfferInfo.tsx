@@ -9,6 +9,7 @@ import Header from "../components/Header";
 function OfferInfo() {
 
   const {id} = useParams();
+  const idKey = localStorage.getItem("id");
   const navigate = useNavigate();
   const [offerDetail, setOfferDetail] = useState<Offer>();
 
@@ -22,6 +23,27 @@ function OfferInfo() {
     }
 
   }
+
+  const addCart = async() => {
+    console.log("오퍼"+offerDetail?.offerId);
+    console.log("판매상"+offerDetail?.uploaderId);
+    
+    
+    
+    try{
+        const response = await api.post("/cart/add", {
+            ownerId: idKey,
+            offerId: offerDetail?.offerId,
+            quantity: 1
+        });
+        
+        console.log(response);
+        alert("장바구니에 상품을 추가했습니다");
+    }catch(error){
+    console.error(error.response?.data);
+    alert(error.response?.data.message)
+  }
+  };
 
   useEffect(() => {
     if(!id) return;
@@ -58,7 +80,7 @@ function OfferInfo() {
                 <div className = "offer-product-description">{offerDetail.productDesc}</div>
                 <div className = "offer-product-button-zone">
                     <div className = "offer-button offer-check-chat">문의하기</div>
-                    <div className = {`offer-button  ${isSoldOut? "soldout-highlight":"offer-add-cart"}`}>{isSoldOut? ("품절"): ("장바구니")}</div>
+                    <div className = {`offer-button  ${isSoldOut? "soldout-highlight":"offer-add-cart"}`} onClick={addCart}>{isSoldOut? ("품절"): ("장바구니")}</div>
                 </div>
                 </>
 
