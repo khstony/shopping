@@ -73,7 +73,7 @@ public class CartController {
     }
 
     @GetMapping("/view/{id}")
-    public ResponseEntity<List<?>> loadCart(@PathVariable String id) {
+    public ResponseEntity<List<?>> loadCart(@PathVariable Long id) {
         return ResponseEntity.ok(cartService.loadCart(id));
 
     }

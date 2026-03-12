@@ -27,9 +27,10 @@ function Login() {
       const idKey = response.data.id;
       const userType = response.data.userType;
       localStorage.setItem("accessToken", token);
-      localStorage.setItem("userId", idLogin);
-      localStorage.setItem("id", idKey);
-      console.log(response);
+      localStorage.setItem("userId", idLogin); //입력한 문자열 id
+      localStorage.setItem("id", idKey); //db넘버
+      console.log("아이디넘버"+idKey);
+      console.log("응답"+response);
       if(response.data.userType == "BUYER"){
         localStorage.setItem("userType", userType);
           navigate("/main");

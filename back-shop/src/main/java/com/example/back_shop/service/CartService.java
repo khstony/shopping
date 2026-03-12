@@ -110,13 +110,14 @@ public class CartService {
         }
 
         @Transactional
-        public List<CartResponseDto> loadCart(String ownerId) {
-                System.out.println("전달 ownerId = " + ownerId);
-                System.out.println("조회결과 = " + userRepository.findByUserId(ownerId));
-                UserEntity user = userRepository.findByUserId(ownerId)
-                                .orElseThrow(() -> new IllegalArgumentException("유저 무효"));
+        public List<CartResponseDto> loadCart(Long ownerId) {
 
-                List<CartEntity> carts = cartRepository.findByOwnerId(user.getId());
+                System.out.println("서비스진입");
+                UserEntity user = new UserEntity();
+                user.setId(ownerId);
+                System.out.println("검사" + user.getId());
+                System.out.println("검사" + cartRepository.findByOwnerId(user));
+                List<CartEntity> carts = cartRepository.findByOwnerId(user);
 
                 return carts.stream()
                                 .map(cart -> new CartResponseDto(

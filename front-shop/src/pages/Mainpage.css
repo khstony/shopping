@@ -19,11 +19,11 @@
 }
 
 .multi-banner{
-    border : 2px solid red;
+    border : 2px solid none;
     display : flex;
     align-items: center;
     justify-content: center;
-    height: 50px;
+    height: 30px;
     width : 100%;
     position : relative;
 }

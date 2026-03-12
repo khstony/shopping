@@ -15,12 +15,14 @@ function MainPage() {
  const navigate = useNavigate();
 
   const [offerList, setOfferList] = useState<Offer[]>([]);
-
+  
+  
   const fetchOffer = async() =>{
 
     try{
       const res = await api.get('offers/load');
       setOfferList(res.data);
+      
       console.log("오퍼 패치됨", res.data);
     } catch (err){
       console.error("에러", err);
