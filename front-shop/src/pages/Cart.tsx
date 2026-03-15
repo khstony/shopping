@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import "./Cart.css";
 import {testshop} from "../testdata/testshop";
 import type { Offer } from "../types/offer"
-import OfferCell from "../components/OfferCell";
+import CartCell from "../components/CartCell";
 import api from "../api/axiosInstance";
 import logo from "../assets/logo-transparent.png"
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,11 @@ import Header from '../components/Header';
 
 function Cart() {
   const [cartList, setCartList] = useState([]);
+
+  const totalPrice = cartList.reduce((sum, cart) => {
+  const actualPrice = cart.productPrice * (1 - cart.discountRate / 100);
+  return sum + actualPrice * cart.quantity;
+}, 0);
 
   const id = localStorage.getItem("id");
   const userId = localStorage.getItem("userId");
@@ -29,8 +34,20 @@ function Cart() {
 
   useEffect(() => {
     fetchOffer();
-    console.log("오퍼 패치됨", cartList);
+    console.log("장바구니 패치됨", cartList);
   },[]);
+
+  const purchase = async() =>{
+    try{
+      const res = await api.post(`/cart/purchase/${id}`);
+      alert("구매를 완료했습니다.");
+      fetchOffer();
+    } catch(err){
+      console.error("에러 : ", err);
+      alert(error.res?.data.message)
+
+    }
+  }
 
 
   
@@ -38,8 +55,22 @@ function Cart() {
     <div className = "cart-wrapper">
       <Header/>
       <div className = "cart-center-zone">
-    {id}, {userId}
+        <div className = "cart-list">
+          {cartList.map((cart) => (
+            <CartCell
+              key = {cart.id}
+              {...cart}
+              fetchOffer = {fetchOffer}
+            />
+          ))}
+        </div>
+        <div className = "cart-purchase-button" onClick={purchase}>
+          총합 {totalPrice}원
+          <span className = "cart-purchase-text">구매</span>
+        </div>
+        
       </div>
+      
     </div>
 
   )

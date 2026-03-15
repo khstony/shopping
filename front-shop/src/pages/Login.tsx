@@ -26,7 +26,7 @@ function Login() {
       const token = response.data.token;
       const idKey = response.data.id;
       const userType = response.data.userType;
-      localStorage.setItem("accessToken", token);
+      localStorage.setItem("token", token);
       localStorage.setItem("userId", idLogin); //입력한 문자열 id
       localStorage.setItem("id", idKey); //db넘버
       console.log("아이디넘버"+idKey);

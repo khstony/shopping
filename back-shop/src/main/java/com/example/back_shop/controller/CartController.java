@@ -78,4 +78,24 @@ public class CartController {
 
     }
 
+    // @GetMapping("/purchase/{id}")
+    // public ResponseEntity<List<?>> cartPurchase(@PathVariable Long id) {
+    // return ResponseEntity.ok(cartService.cartPurchase(id));
+
+    // }
+
+    @PostMapping("/purchase/{id}")
+    public ResponseEntity<?> purchase(@PathVariable Long id) {
+
+        try {
+            cartService.cartPurchase(id);
+            return ResponseEntity.ok("구매 완료");
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(Map.of("message", e.getMessage()));
+        }
+    }
+
 }

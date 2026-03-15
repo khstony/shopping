@@ -15,7 +15,7 @@ function Upload() {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const idKey = localStorage.getItem("id"); // 현재 유저의 id값
-  const token = localStorage.getItem("accessToken");//유저토큰
+  const token = localStorage.getItem("token");//유저토큰
   const [previewImage, setPreviewImage] = useState(""); //미리보기 이미지
   const imageRef = useRef<HTMLInputElement | null>(null);
   const navigate = useNavigate();

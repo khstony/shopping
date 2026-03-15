@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 
 import com.example.back_shop.repository.*;
 import com.example.back_shop.dto.*;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.example.back_shop.entity.*;
 
@@ -21,6 +22,7 @@ public class CartService {
         private final CartRepository cartRepository;
         private final UserRepository userRepository;
         private final OfferRepository offerRepository;
+        private final OrderService orderService;
 
         @Transactional
         public CartResponseDto addCart(CartRequestDto request) {
@@ -35,7 +37,7 @@ public class CartService {
                         throw new IllegalArgumentException("이미 장바구니에 담은 상품입니다.");
                 }
 
-                if (offer.getStock() <= 1) {
+                if (offer.getStock() <= 0) {
                         throw new IllegalArgumentException("재고가 없어 상품을 담을 수 없습니다.");
                 }
 
@@ -109,6 +111,9 @@ public class CartService {
                                 .build();
         }
 
+        @Value("${image-base-url}")
+        private String imageUrl;
+
         @Transactional
         public List<CartResponseDto> loadCart(Long ownerId) {
 
@@ -124,7 +129,15 @@ public class CartService {
                                                 cart.getId(),
                                                 cart.getOwnerId().getId(),
                                                 cart.getOfferId().getId(),
-                                                cart.getQuantity()))
+                                                cart.getQuantity(),
+
+                                                cart.getOfferId().getStock(),
+                                                cart.getOfferId().getProductName(),
+                                                cart.getOfferId().getProductPrice(),
+                                                cart.getOfferId().getDiscountRate(),
+                                                imageUrl + cart.getOfferId().getProductImage()
+
+                                ))
                                 .collect(Collectors.toList());
         }
 
@@ -133,9 +146,40 @@ public class CartService {
                 cartRepository.deleteById(cartId);
         }
 
-        @Transactional // 여기는 cartRemove에서 재고 카운트 로직 추가할것
-        public void cartPurchase(Long cartId) {
-                cartRepository.deleteById(cartId);
+        @Transactional
+        public void cartPurchase(Long userId) {
+                System.out.println("구매서비스 진입");
+
+                UserEntity user = userRepository.findById(userId)
+                                .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
+                user.setId(userId);
+                List<CartEntity> carts = cartRepository.findByOwnerId(user);
+
+                if (carts.isEmpty()) {
+                        throw new IllegalArgumentException("장바구니가 비어있습니다.");
+                }
+
+                for (CartEntity cart : carts) {
+
+                        OfferEntity offer = cart.getOfferId();
+
+                        if (offer.getStock() < cart.getQuantity()) {
+                                throw new IllegalArgumentException(
+                                                offer.getProductName() + " 재고 부족");
+                        }
+                }
+
+                for (CartEntity cart : carts) {
+
+                        OfferEntity offer = cart.getOfferId();
+
+                        offer.setStock(offer.getStock() - cart.getQuantity());
+                }
+                System.out.println("주소" + user.getAddress());
+                orderService.createOrders(carts, user.getAddress());
+
+                // 장바구니 전체 삭제
+                cartRepository.deleteAll(carts);
         }
 
 }

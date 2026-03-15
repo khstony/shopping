@@ -13,4 +13,11 @@ public class CartResponseDto {
     private Long ownerId;
     private Long offerId;
     private int quantity;
+
+    private int stock;
+    private String productName;
+    private int productPrice;
+    private int discountRate;
+    private String productImage;
+
 }
