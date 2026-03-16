@@ -1,4 +1,5 @@
 export interface Order{
+    id : number;
     address : string;
     buyerId : number;
     offerId : number;
@@ -6,4 +7,5 @@ export interface Order{
     quantity : number;
     sellerId : number;
     status : String;
+
 }

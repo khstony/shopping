@@ -19,10 +19,34 @@
     font-weight: 700;
 }
 
+.order-status-switch-button{
+    background-color: #2AB9E0;
+    width : 25px;
+    height : 25px;
+    margin-left : 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin  : 10px;
+}
+
+.order-status-switch-button:hover{
+    background-color: #2a97e0;
+    
+}
+
 .ordered{
     background-color: blue;
 }
 
+.order-arrow-icon{
+    width : 12px;
+    height: 12px;
+}
 .order-date-tag{
     padding : 10px;
     font-weight: 800;

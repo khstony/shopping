@@ -3,6 +3,7 @@ package com.example.back_shop.dto;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,8 +13,10 @@ import com.example.back_shop.entity.OrderStatus;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 
 public class OrderResponseDto {
+    private Long id;
     private String address;
     private Long buyerId;
     private OrderStatus status;

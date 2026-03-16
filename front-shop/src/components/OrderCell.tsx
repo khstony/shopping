@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import type { Order } from "../types/order"
 import "./OrderCell.css";
+import arrow from "../assets/arrow.png"
 
 
 type OrderCellProps = Order;
@@ -15,7 +16,9 @@ function OrderCell(props: OrderCellProps) {
         orderDate,
         quantity,
         sellerId,
-        status
+        status,
+        id,
+        fetchOrder
     } = props;
 
 
@@ -23,23 +26,60 @@ function OrderCell(props: OrderCellProps) {
 
     const statusMap = {
         ORDERED: "주문 완료",
-        SHIPPED: "배송 중",
+        SHIPPING: "배송 중",
         COMPLETE: "배송 완료",
         CANCEL: "주문 취소"
     };
 
-    const statusCss = {
-        ORDERED: "ordered",
-        SHIPPED: "배송 중",
-        COMPLETE: "배송 완료",
-        CANCEL: "주문 취소"
-    };
+    
 
+    const statusSwitch = async() =>{
+        console.log(id);
+        const newStatus = statusChanger(status);
+
+        try{
+            const response = await api.put("/order/edit", {
+                id : id,
+                address : address,
+                buyerId : buyerId,
+                status : newStatus,
+                orderDate : orderDate,
+                quantity : quantity,
+                offerId : offerId,
+                sellerId : sellerId,
+            });
+            console.log("order edidte")
+            fetchOrder();
+            console.log(response)
+        }catch(error){
+      console.error(error.response.data);
+      alert(error?.response?.data.message);
+    }
+    }
+
+    function statusChanger(status){
+        if(status === "ORDERED")
+            return "SHIPPING";
+        else if (status ==="SHIPPING")
+            return "COMPLETE"
+        else if (status ==="COMPLETE")
+            return "CANCEL"
+        else if (status ==="CANCEL")
+            return "ORDERED"
+    }
 
     return (
         <div className="order-cell-wrapper">
             <div className={`order-cell-top`}>
                 <div className={`order-status-tag ${statusMap[status]}`}>{statusMap[status]}</div>
+                <div className = "order-status-switch-button" onClick={statusSwitch}>
+                    <img
+                        className = "order-arrow-icon"
+                        src ={arrow} 
+                        alt = "aro"
+                    />
+                 
+                </div>
                 <div className="order-date-tag">주문 일자 : {orderDate}</div>
             </div>
 

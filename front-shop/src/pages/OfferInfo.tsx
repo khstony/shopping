@@ -115,6 +115,7 @@ function OfferInfo() {
                                 <OrderCell
                                     key={order.orderId}
                                     {...order}
+                                    fetchOrder = {fetchOrder}
                                 />
                             ))}
                         </div>

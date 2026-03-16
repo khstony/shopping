@@ -52,6 +52,7 @@ public class OrderService {
         System.out.println("load order 진입");
         return orders.stream()
                 .map(order -> new OrderResponseDto(
+                        order.getId(),
                         order.getAddress(),
                         order.getBuyerId(),
                         order.getStatus(),
@@ -60,6 +61,24 @@ public class OrderService {
                         order.getOffer().getId(),
                         order.getSellerId()))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public OrderResponseDto editOrder(OrderRequestDto request) {
+        System.out.println("orderedit 진입" + request.getId());
+        OrderEntity order = orderRepository.findById(request.getId())
+                .orElseThrow(() -> new IllegalArgumentException("해당 주문 무효"));
+        System.out.println("에딧 시작");
+        order.setStatus(request.getStatus());
+        return OrderResponseDto.builder()
+                .address(order.getAddress())
+                .buyerId(order.getBuyerId())
+                .status(order.getStatus())
+                .orderDate(order.getOrderDate())
+                .quantity(order.getQuantity())
+                .offerId(order.getOffer().getId())
+                .sellerId(order.getSellerId())
+                .build();
     }
 
 }
