@@ -2,6 +2,7 @@ package com.example.back_shop.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -10,9 +11,11 @@ import com.example.back_shop.entity.OfferEntity;
 import com.example.back_shop.entity.OrderEntity;
 import com.example.back_shop.entity.OrderStatus;
 import com.example.back_shop.repository.*;
-
+import com.example.back_shop.dto.*;
 import lombok.RequiredArgsConstructor;
 import jakarta.transaction.Transactional;
+
+import lombok.*;
 
 @Service
 @RequiredArgsConstructor
@@ -40,6 +43,23 @@ public class OrderService {
 
             orderRepository.save(order);
         }
+    }
+
+    @Transactional
+    public List<OrderResponseDto> loadOrders(Long offerId) {
+        System.out.println("load order 시작");
+        List<OrderEntity> orders = orderRepository.findByOfferId(offerId);
+        System.out.println("load order 진입");
+        return orders.stream()
+                .map(order -> new OrderResponseDto(
+                        order.getAddress(),
+                        order.getBuyerId(),
+                        order.getStatus(),
+                        order.getOrderDate(),
+                        order.getQuantity(),
+                        order.getOffer().getId(),
+                        order.getSellerId()))
+                .collect(Collectors.toList());
     }
 
 }

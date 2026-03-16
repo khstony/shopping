@@ -7,7 +7,7 @@ import "./OfferCell.css";
 
 type OfferCellProps = Offer;
 
-function OfferCell(props: Offer) {
+function OfferCell(props: OfferCellProps) {
   const {
     offerId,
     uploader,

@@ -13,10 +13,16 @@
     background-color: white;
     border : 1px solid #c4bfbf;
     margin-top : 100px;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     padding: 20px;
+    flex-direction: column;
+}
+
+.offer-top-zone{
+    display: flex;
+    flex-direction: row;
 }
 
 .main-header{
@@ -196,4 +202,11 @@
     background-color: pink;
 }
 
+.offer-bottom-zone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width : 100%;
+    
+}
 

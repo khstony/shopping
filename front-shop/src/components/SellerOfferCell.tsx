@@ -6,7 +6,7 @@ import "./SellerOfferCell.css";
 
 type OfferCellProps = Offer;
 
-function SellerOfferCell(props: Offer) {
+function SellerOfferCell(props: OfferCellProps) {
   const {
     offerId,
     uploader,
@@ -17,12 +17,14 @@ function SellerOfferCell(props: Offer) {
     discountRate,
     stock,
   } = props;
-
+  const navigate = useNavigate();
   const isSoldOut = stock===0;
   const isDiscounted = discountRate > 0;
   const actualPrice = productPrice * (1 - discountRate/100);
 
-
+  const showInfo = () =>{
+    navigate(`/offer/${offerId}`);
+  }
   return (
     <div className="cell-seller-wrapper">
         <div className = "cell-seller-image">
@@ -51,6 +53,7 @@ function SellerOfferCell(props: Offer) {
 
             <div className = "cell-seller-bottom">
                 <div className = "cell-seller-button-section">
+                    <div className = "cell-seller-button" onClick={showInfo}>주문</div>
                     <div className = "cell-seller-button">문의</div>
                     <div className = "cell-seller-button">수정</div>
                     <div className = "cell-seller-button">삭제</div>
