@@ -41,7 +41,8 @@ public class SecurityConfig {
                                 "/api/cart/add",
                                 "/cart/**",
                                 "/api/order/**",
-                                "/order/**")
+                                "/order/**",
+                                "/chat/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .formLogin(form -> form.disable()); // 로그인 페이지 비활성화

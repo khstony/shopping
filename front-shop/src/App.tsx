@@ -9,6 +9,7 @@ import SellerPage from './pages/Sellerpage';
 import OfferInfo from './pages/OfferInfo';
 import Upload from './pages/Upload';
 import Cart from './pages/Cart';
+import Chat from './pages/Chat';
 import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path = "/offer/:id" element = {<OfferInfo/>}/>
         <Route path = "/upload" element = {<Upload/>}/>
         <Route path = "/cart" element = {<Cart/>}/>
+        <Route path = "/chat" element = {<Chat/>}/>
       </Routes>
     </BrowserRouter>
   )
