@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @Getter
 public class ChatResponseDto {
-
+    private Long id;
     private Long roomId;
     private Long senderId;
     private String message;

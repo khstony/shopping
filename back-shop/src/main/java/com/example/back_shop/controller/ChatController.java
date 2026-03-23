@@ -1,6 +1,10 @@
 package com.example.back_shop.controller;
 
 import lombok.RequiredArgsConstructor;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
@@ -9,6 +13,10 @@ import com.example.back_shop.dto.ChatRequestDto;
 import com.example.back_shop.dto.ChatResponseDto;
 import com.example.back_shop.entity.MessageEntity;
 import com.example.back_shop.service.ChatService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 @RequiredArgsConstructor
@@ -28,6 +36,7 @@ public class ChatController {
                 .createdAt(message.getCreatedAt())
                 .build();
 
-        messagingTemplate.convertAndSend("/client/chat/room/" + request.getRoomId(), response);
+        messagingTemplate.convertAndSend("/topic/chat/room/" + request.getRoomId(), response);
     }
+
 }
