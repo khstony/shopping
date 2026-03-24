@@ -2,6 +2,8 @@ package com.example.back_shop.entity;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -52,6 +54,7 @@ public class ChatRoomEntity {
     @Column(name = "status", nullable = false)
     private ChatRoomStatus status;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 }

@@ -2,6 +2,19 @@
     border : 1px solid none;
     width : 100%;
     display : flex;
+    flex-direction: column;
+}
+
+.message-sender-me{
+    margin-left : auto;
+    font-size : 13px;
+    font-weight: 700;
+}
+
+.message-sender-you{
+    margin-right : auto;
+    font-size : 13px;
+    font-weight: 700;
 }
 
 .message-base{
@@ -9,24 +22,6 @@
 }
 
 .message-me{
-    display : flex;
-    padding : 5px;
-    margin-top : 5px;
-    margin-bottom : 5px;
-    margin-right : auto;
-    margin-left : 5px;
-    max-width : 600px;
-    font-size : 20px;
-    font-weight : 600;
-    border : 3px solid #2AB9E0;
-    background-color: white;
-
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
-}
-
-.message-you{
     display : flex;
     padding : 5px;
     margin-top : 5px;
@@ -42,4 +37,22 @@
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
     border-bottom-left-radius: 7px;
+}
+
+.message-you{
+    display : flex;
+    padding : 5px;
+    margin-top : 5px;
+    margin-bottom : 5px;
+    margin-right : auto;
+    margin-left : 5px;
+    max-width : 600px;
+    font-size : 20px;
+    font-weight : 600;
+    border : 3px solid #2AB9E0;
+    background-color: white;
+
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
 }

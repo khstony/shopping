@@ -1,5 +1,7 @@
 package com.example.back_shop.dto;
 
+import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,9 +13,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ChatRequestDto {
-
-    private Long roomId;
-    private Long senderId;
-    private String message;
+public class ChatRoomResponseDto {
+    private Long id;
+    private LocalDateTime createdAt;
+    private Long buyerId;
+    private Long sellerId;
+    private Long offerId;
 }

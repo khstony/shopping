@@ -13,7 +13,8 @@ function Message(props: MessageProps) {
     roomId,
     senderId,
     message,
-    createdAt
+    createdAt,
+    senderName
   } = props;
 
 
@@ -26,6 +27,7 @@ function Message(props: MessageProps) {
 
   return (
    <div className = "message-wrapper">
+    <div className = {idKey == senderId ? "message-sender-me" : "message-sender-you" }>{senderName}</div>
     <div className = {idKey == senderId ? "message-me" : "message-you" }>
          {id} {roomId} {senderId} {message}
     </div>
