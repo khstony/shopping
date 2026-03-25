@@ -1,6 +1,6 @@
 export interface Offer {
   offerId: number;
-  uploader: number;
+  uploaderId: number;
   productName: string;
   productImage: string;
   productDesc: string;

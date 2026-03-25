@@ -28,6 +28,38 @@ function OfferInfo() {
 
     }
 
+    const goChat = async () => {
+        try {
+            const response = await api.post(`/chatRoom/chat/findRoom`, {
+                buyerId: idKey,
+                offerId: offerDetail?.offerId
+            });
+
+            localStorage.setItem("roomId", response.data);
+            console.log("new room id : "+ response.data);
+            navigate(`/chat`);
+        }catch(error){
+            console.log("방이 없으므로 생성합니다" + offerDetail?.uploaderId);
+            try{
+                const response = await api.post(`/chatRoom/chat/create`,{
+                    buyerId : idKey,
+                    sellerId : offerDetail?.uploaderId,
+                    offerId : offerDetail?.offerId
+                });
+                console.log("new created room id : " + response.data.id);
+                 localStorage.setItem("roomId",  response.data.id);
+                 navigate(`/chat`);
+               
+            }catch(error: any){
+                console.log(error);
+            }
+            
+        }
+        
+    }
+
+
+
     const fetchOrder = async () => {
         try {
             const res = await api.get(`/order/load/${id}`)
@@ -57,11 +89,14 @@ function OfferInfo() {
         }
     };
 
+
+
     useEffect(() => {
         if (!id) return;
         fetchOfferDetail();
         fetchOrder();
     }, [id]);
+
 
     if (!offerDetail) return <div>로딩중...</div>;
     const isDiscounted = offerDetail.discountRate > 0;
@@ -95,7 +130,7 @@ function OfferInfo() {
 
                             {userType === "BUYER" && (
                                 <div className="offer-product-button-zone">
-                                    <div className="offer-button offer-check-chat">문의하기</div>
+                                    <div className="offer-button offer-check-chat" onClick={goChat}>문의하기</div>
                                     <div className={`offer-button  ${isSoldOut ? "soldout-highlight" : "offer-add-cart"}`} onClick={addCart}>{isSoldOut ? ("품절") : ("장바구니")}</div>
                                 </div>
                             )}
@@ -115,7 +150,7 @@ function OfferInfo() {
                                 <OrderCell
                                     key={order.orderId}
                                     {...order}
-                                    fetchOrder = {fetchOrder}
+                                    fetchOrder={fetchOrder}
                                 />
                             ))}
                         </div>

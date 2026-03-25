@@ -37,6 +37,7 @@ public class ChatService {
 
         @Transactional
         public MessageEntity saveMessage(ChatRequestDto request) {
+
                 System.out.println("전송 로직1");
                 ChatRoomEntity room = chatRoomRepository.findById(request.getRoomId())
                                 .orElseThrow(() -> new IllegalArgumentException("채팅방 없음"));
@@ -55,7 +56,7 @@ public class ChatService {
                 return messageRepository.save(message);
         }
 
-        public List<ChatResponseDto> loadChat(Long id) { // 나중에 방id만 가져오는 서비스 따로 만들기
+        public List<ChatResponseDto> loadChat(Long id) {
 
                 List<MessageEntity> messages = messageRepository.findByRoom_Id(id);
 
@@ -71,21 +72,22 @@ public class ChatService {
         }
 
         public ChatRoomResponseDto makeRoom(ChatRoomRequestDto request) {
-                System.out.println("전체요청" + request);
-                System.out.println("테스트" + " buyer" + request.getBuyerId() + "seller " + request.getSellerId()
-                                + "offer " + request.getOfferId());
+                System.out.println("진행1");
+                System.out.println("buyerid : " + request.getBuyerId());
+                System.out.println("sellerid : " + request.getSellerId());
+                System.out.println("offerid : " + request.getOfferId());
                 UserEntity buyer = userRepository.findById(request.getBuyerId())
                                 .orElseThrow(() -> new IllegalArgumentException("에러 : 구매자 무효"));
-                System.out.println("진행1");
+
                 UserEntity seller = userRepository.findById(request.getSellerId())
                                 .orElseThrow(() -> new IllegalArgumentException("에러 : 판매자 무효"));
-                System.out.println("진행2");
+
                 OfferEntity offer = offerRepository.findById(request.getOfferId())
                                 .orElseThrow(() -> new IllegalArgumentException("에러 : 상품 무효"));
-                System.out.println("진행3");
+                System.out.println("진행2");
                 Optional<ChatRoomEntity> existingRoom = chatRoomRepository.findByBuyerAndSellerAndOffer(buyer, seller,
                                 offer);
-                System.out.println("진행4");
+                System.out.println("진행3");
                 ChatRoomEntity room = existingRoom.orElseGet(() -> chatRoomRepository.save(
                                 ChatRoomEntity.builder()
                                                 .buyer(buyer)
@@ -93,7 +95,7 @@ public class ChatService {
                                                 .offer(offer)
                                                 .status(ChatRoomStatus.ACTIVE)
                                                 .build()));
-                System.out.println("진행5");
+                System.out.println("진행4");
                 return ChatRoomResponseDto.builder()
                                 .id(room.getId())
                                 .createdAt(room.getCreatedAt())
@@ -101,5 +103,19 @@ public class ChatService {
                                 .sellerId(room.getSeller().getId())
                                 .offerId(room.getOffer().getId())
                                 .build();
+        }
+
+        public Long getRoomId(Long buyerId, Long offerId) {
+                UserEntity user = userRepository.findById(buyerId)
+                                .orElseThrow(() -> new IllegalArgumentException("유저 무효"));
+
+                OfferEntity offer = offerRepository.findById(offerId)
+                                .orElseThrow(() -> new IllegalArgumentException("오퍼 무효"));
+
+                ChatRoomEntity room = chatRoomRepository.findByBuyerAndOffer(user, offer);
+
+                Long roomId = room.getId();
+
+                return roomId;
         }
 }

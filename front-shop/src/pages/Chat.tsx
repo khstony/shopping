@@ -13,7 +13,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const senderId = localStorage.getItem("id");
-  const roomId = 1;     // 테스트용
+  const roomId = localStorage.getItem("roomId");     // 테스트용
 
   const fetchChat = async () =>{
       try{

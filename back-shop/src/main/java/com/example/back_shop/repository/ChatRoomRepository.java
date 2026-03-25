@@ -11,4 +11,6 @@ import com.example.back_shop.entity.UserEntity;
 
 public interface ChatRoomRepository extends JpaRepository<ChatRoomEntity, Long> {
     Optional<ChatRoomEntity> findByBuyerAndSellerAndOffer(UserEntity buyer, UserEntity seller, OfferEntity offer);
+
+    ChatRoomEntity findByBuyerAndOffer(UserEntity buyer, OfferEntity offer);
 }
