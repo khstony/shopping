@@ -42,4 +42,9 @@ public class UserController {
                     .body(Map.of("message", e.getMessage()));
         }
     }
+
+    @GetMapping("/nickname/{userId}")
+    public ResponseEntity<?> getNicknameById(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getNickname(userId));
+    }
 }

@@ -29,10 +29,10 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/images/**",
                                 "/swagger-ui.html",
-                                "/api/users/register",
-                                "/api/users/login",
-                                "/users/login",
-                                "/users/register",
+
+                                "/api/users/**",
+                                "/users/**",
+
                                 "/offers/upload",
                                 "/api/offers/upload",
                                 "/offers/load/**",

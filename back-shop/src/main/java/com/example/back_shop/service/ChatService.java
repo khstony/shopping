@@ -113,9 +113,32 @@ public class ChatService {
                                 .orElseThrow(() -> new IllegalArgumentException("오퍼 무효"));
 
                 ChatRoomEntity room = chatRoomRepository.findByBuyerAndOffer(user, offer);
+                if (room == null) {
+                        System.out.println("방");
 
+                        return null;
+                }
                 Long roomId = room.getId();
+                System.out.println("방" + roomId);
 
                 return roomId;
         }
+
+        public List<ChatRoomResponseDto> findAvailableRoomsForSeller(Long offerId) {
+
+                OfferEntity offer = offerRepository.findById(offerId)
+                                .orElseThrow(() -> new IllegalArgumentException("오퍼 없음"));
+
+                List<ChatRoomEntity> rooms = chatRoomRepository.findByOffer(offer);
+
+                return rooms.stream()
+                                .map(room -> new ChatRoomResponseDto(
+                                                room.getId(),
+                                                room.getCreatedAt(),
+                                                room.getBuyer().getId(),
+                                                room.getSeller().getId(),
+                                                room.getOffer().getId()))
+                                .collect(Collectors.toList());
+        }
+
 }

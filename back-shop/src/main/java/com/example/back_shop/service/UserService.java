@@ -76,4 +76,11 @@ public class UserService {
                 .build();
 
     }
+
+    public String getNickname(Long userId) {
+        UserEntity user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("이름 검색실패"));
+
+        return user.getNickname();
+    }
 }

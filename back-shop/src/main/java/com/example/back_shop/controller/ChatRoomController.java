@@ -52,4 +52,9 @@ public class ChatRoomController {
         }
     }
 
+    @GetMapping("/chat/findRoomsForSeller/{offerId}")
+    public ResponseEntity<List<?>> findRoomsForSeller(@PathVariable Long offerId) {
+        return ResponseEntity.ok(chatService.findAvailableRoomsForSeller(offerId));
+    }
+
 }

@@ -45,8 +45,19 @@
 }
 
 .cart-purchase-button:hover{
-    background-color: #2a97e0;   /* hover 색 */
+    background-color: #2a97e0; 
     cursor: pointer;
+}
+
+.cart-empty{
+    display: flex;
+    font-size : 20px;
+    font-weight : 1000px;
+    color : #bbbbbb;
+    height : 300px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .cart-cell-soldout{

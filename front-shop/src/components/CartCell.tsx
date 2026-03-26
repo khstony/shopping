@@ -82,7 +82,7 @@ function CartCell(props: CartCellProps) {
 
   return (
     <div className="cart-cell-wrapper">
-      {Id}/구매자{ownerId}/{offerId}/{quantity}
+     
       <div className = "cart-cell-left-zone">
         <div className = "cart-cell-image">
           <img className="cart-cell-image-inner"

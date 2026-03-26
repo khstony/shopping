@@ -21,12 +21,14 @@ function Message(props: MessageProps) {
   
   const idKey = localStorage.getItem("id");
 
-
+  const showInfo = () =>{
+    console.log(senderName);
+  }
 
  
 
   return (
-   <div className = "message-wrapper">
+   <div className = "message-wrapper" onClick = {showInfo}>
     <div className = {idKey == senderId ? "message-sender-me" : "message-sender-you" }>{senderName}</div>
     <div className = {idKey == senderId ? "message-me" : "message-you" }>
          {id} {roomId} {senderId} {message}
