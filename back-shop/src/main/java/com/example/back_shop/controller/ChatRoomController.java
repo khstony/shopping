@@ -57,4 +57,9 @@ public class ChatRoomController {
         return ResponseEntity.ok(chatService.findAvailableRoomsForSeller(offerId));
     }
 
+    @GetMapping("/chat/room/topmsg/{roomId}")
+    public ResponseEntity<?> getLatestMessage(@PathVariable Long roomId) {
+        return ResponseEntity.ok(chatService.lastMessage(roomId));
+    }
+
 }

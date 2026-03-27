@@ -141,4 +141,13 @@ public class ChatService {
                                 .collect(Collectors.toList());
         }
 
+        public String lastMessage(Long roomId) {
+                MessageEntity message = messageRepository.findTopByRoom_IdOrderByCreatedAtDesc(roomId);
+
+                if (message == null)
+                        return null;
+
+                return message.getMessage();
+        }
+
 }

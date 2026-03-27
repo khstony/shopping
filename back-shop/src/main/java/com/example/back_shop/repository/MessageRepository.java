@@ -9,4 +9,7 @@ import com.example.back_shop.entity.MessageEntity;
 
 public interface MessageRepository extends JpaRepository<MessageEntity, Long> {
     List<MessageEntity> findByRoom_Id(Long id);
+
+    MessageEntity findTopByRoom_IdOrderByCreatedAtDesc(Long id);
+
 }

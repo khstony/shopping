@@ -43,6 +43,11 @@ function SellerOfferCell(props: OfferCellProps) {
     }
     
   }
+    const showModal = () =>{
+    console.log("modal toggled");
+    fetchBuyer();
+    setModal(!modal);
+  }
 
   const listModal = (
     <div className='offercell-chat-list-overlay'>
@@ -56,15 +61,12 @@ function SellerOfferCell(props: OfferCellProps) {
                     />
                 ))}
              </div>
+             <div className = "offercell-chat-close" onClick = {showModal}>닫기</div>
         </div>
     </div>
   )
 
-  const showModal = () =>{
-    console.log("modal toggled");
-    fetchBuyer();
-    setModal(!modal);
-  }
+
   return (
     <div className="cell-seller-wrapper">
         <div className = "cell-seller-image">

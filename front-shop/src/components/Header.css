@@ -31,6 +31,21 @@
     padding-right : 10px;
 }
 
+.header-nick{
+    width : 60px;
+    height : 30px;
+    background-color: transparent;
+    color : white;
+    display : flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-right : 20px;
+    font-weight: 600;
+    text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
+    border-radius: 10px;
+}
+
 .header-search-button{
     width : 60px;
     height : 30px;

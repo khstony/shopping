@@ -1,0 +1,43 @@
+.buyer-cell-wrapper{
+    border : 1px solid #f0f0f0;
+    height : 55px;
+    background-color: #f0f0f0;
+    margin : 3px;
+    border-radius : 3px;
+}
+
+.buyer-cell-top-zone{
+    display : flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(185, 185, 185);
+}
+
+.buyer-name{
+    background-color: transparent;
+    font-size : 15px;
+    font-weight: 1000;
+    margin : 2px;
+    width : 100px;
+    height : 25px;
+    border-radius: 3px;
+    
+}
+
+.buyercell-gochat{
+    margin-left : auto;
+    margin-right : 5px;
+    background-color: #2AB9E0;
+    width : 55px;
+    height : 23px;
+    text-align: center;
+    border-radius: 2px;
+    font-weight: 600;
+    font-size : 15px;
+}
+
+.buyercell-gochat:hover{
+    background-color: #2a97e0;
+    
+}
