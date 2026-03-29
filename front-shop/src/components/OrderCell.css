@@ -1,6 +1,7 @@
 .order-cell-wrapper{
     width : 850px;
-    border : 1px solid red;
+    border : 1px solid #bbbbbb;
+    margin : 5px;
     display: flex;
     flex-direction: column;
 }

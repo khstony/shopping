@@ -31,14 +31,15 @@ public class OfferController {
     }
 
     @GetMapping("/load")
-    public ResponseEntity<List<OfferResponseDto>> loadAll() {
-        return ResponseEntity.ok(offerService.loadAll());
+    public ResponseEntity<List<OfferResponseDto>> loadAll(@RequestParam(required = false) String keyword) {
+        return ResponseEntity.ok(offerService.loadAll(keyword));
     }
 
     @GetMapping("/load/uploader/{id}")
-    public ResponseEntity<List<OfferResponseDto>> loadByUploader(@PathVariable Long id) {
+    public ResponseEntity<List<OfferResponseDto>> loadByUploader(@PathVariable Long id,
+            @RequestParam(required = false) String keyword) {
 
-        return ResponseEntity.ok(offerService.loadUploader(id));
+        return ResponseEntity.ok(offerService.loadUploader(id, keyword));
     }
 
     @GetMapping("/load/single/{id}")

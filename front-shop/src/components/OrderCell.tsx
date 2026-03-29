@@ -91,8 +91,8 @@ function OrderCell(props: OrderCellProps) {
                 <div className="order-quantity">수량 : {quantity}개</div>
                 <div className="order-buttons-section">
 
-                    <div className="order-button">버튼1</div>
-                    <div className="order-button">버튼2</div>
+                    {/* <div className="order-button">버튼1</div>
+                    <div className="order-button">버튼2</div> */}
                 </div>
             </div>
 

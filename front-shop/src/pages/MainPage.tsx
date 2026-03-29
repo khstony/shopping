@@ -1,26 +1,32 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "./Mainpage.css";
+
 import {testshop} from "../testdata/testshop";
 import type { Offer } from "../types/offer"
 import OfferCell from "../components/OfferCell";
 import api from "../api/axiosInstance";
 import logo from "../assets/logo-transparent.png"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Logo from "../components/Logo";
 import Banner from '../components/Banner';
 import Header from '../components/Header';
 
 function MainPage() {
- 
+ const location = useLocation();
+ const params = new URLSearchParams(location.search);
  const navigate = useNavigate();
 
   const [offerList, setOfferList] = useState<Offer[]>([]);
-  
-  
+  const keyword = params.get("keyword") || "";
+ 
   const fetchOffer = async() =>{
 
     try{
-      const res = await api.get('offers/load');
+      const res = await api.get("offers/load",{
+        params:{
+          keyword : keyword || ""
+        }
+      });
       setOfferList(res.data);
       
       console.log("오퍼 패치됨", res.data);
@@ -31,9 +37,9 @@ function MainPage() {
   }
 
   useEffect(() => {
-    fetchOffer();
+    fetchOffer(keyword);
     console.log("오퍼 패치됨", offerList);
-  },[]);
+  },[keyword]);
 
 
   const gotoMain =() =>{

@@ -108,6 +108,11 @@
     border : 1px solid none;
 }
 
+.offer-list-header{
+    font-size : 20px;
+    font-weight : 800
+}
+
 .offer-product-price{
     font-size : 25px;
     font-weight: 600;

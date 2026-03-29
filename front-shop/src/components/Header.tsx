@@ -12,11 +12,13 @@ function Header(){
 
   const navigate = useNavigate();
   const [nick, setNick] = useState("");
+  const [searchWord, setSearchWord] = useState("");
   const idKey = localStorage.getItem("id");
+  const userType = localStorage.getItem("userType");
   const goCart = () => {
     navigate("/cart");
   }
-  const userType = localStorage.getItem("userType");
+  
   const fetchName = async () => {
 
     try {
@@ -34,14 +36,26 @@ function Header(){
         fetchName();
       }, [idKey]);
 
+
+  const search = () => {
+    console.log("검색버튼 클릭" + searchWord);
+
+    if(userType === "BUYER"){
+      navigate(`/main?keyword=${encodeURIComponent(searchWord)}`);
+    }
+    else{
+      navigate(`/seller?keyword=${encodeURIComponent(searchWord)}`);
+    }
+  }
+
   return (
     <div className = "header-wrapper">
         <Logo/>
         
         <div className = "header-menubox">
           <div className='header-nick'>{nick}</div>
-          <input className = "header-searchbox"/>
-          <div className = "header-search-button">검색</div>
+          <input className = "header-searchbox" onChange={(e) => setSearchWord(e.target.value)}/>
+          <div className = "header-search-button" onClick={search}>검색</div>
           
         </div>
         {userType === "BUYER" && (

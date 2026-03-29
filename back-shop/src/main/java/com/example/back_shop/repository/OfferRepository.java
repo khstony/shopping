@@ -10,6 +10,9 @@ import com.example.back_shop.entity.OfferEntity;
 public interface OfferRepository extends JpaRepository<OfferEntity, Long> {
     List<OfferEntity> findByUploaderId(Long uploaderId);
 
+    List<OfferEntity> findByUploaderIdAndProductNameContaining(Long uploaderId, String keyword);
+
     Optional<OfferEntity> findById(Long offerId);
 
+    List<OfferEntity> findByProductNameContaining(String keyword);
 }

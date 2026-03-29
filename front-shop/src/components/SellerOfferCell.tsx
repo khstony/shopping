@@ -98,7 +98,7 @@ function SellerOfferCell(props: OfferCellProps) {
                     <div className = "cell-seller-button" onClick={showInfo}>주문</div>
                     <div className = "cell-seller-button" onClick = {showModal}>문의</div>
                     <div className = "cell-seller-button">수정</div>
-                    <div className = "cell-seller-button">삭제</div>
+                   
                 </div>
             </div>
             

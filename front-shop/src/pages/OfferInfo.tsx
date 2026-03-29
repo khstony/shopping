@@ -145,7 +145,8 @@ function OfferInfo() {
                 </div>
                 <div className="offer-bottom-zone">
                     {userType === "SELLER" && (
-                        <div>판매자용 메뉴
+                        <div>
+                            <div className = "offer-list-header">주문 리스트</div>
                             {orderList.map((order) => (
                                 <OrderCell
                                     key={order.orderId}

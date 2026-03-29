@@ -61,8 +61,13 @@ public class OfferService {
         @Value("${image-base-url}")
         private String imageUrl;
 
-        public List<OfferResponseDto> loadAll() {
-                List<OfferEntity> offers = offerRepository.findAll();
+        public List<OfferResponseDto> loadAll(String keyword) {
+                List<OfferEntity> offers;
+                if (keyword == null || keyword.trim().isEmpty()) {
+                        offers = offerRepository.findAll();
+                } else {
+                        offers = offerRepository.findByProductNameContaining(keyword);
+                }
 
                 return offers.stream()
                                 .map(offer -> new OfferResponseDto(
@@ -79,8 +84,14 @@ public class OfferService {
                                 .collect(Collectors.toList());
         }
 
-        public List<OfferResponseDto> loadUploader(Long uploaderId) {
-                List<OfferEntity> offers = offerRepository.findByUploaderId(uploaderId);
+        public List<OfferResponseDto> loadUploader(Long uploaderId, String keyword) {
+                List<OfferEntity> offers;
+
+                if (keyword == null || keyword.trim().isEmpty()) {
+                        offers = offerRepository.findByUploaderId(uploaderId);
+                } else {
+                        offers = offerRepository.findByUploaderIdAndProductNameContaining(uploaderId, keyword);
+                }
 
                 return offers.stream()
                                 .map(offer -> new OfferResponseDto(
