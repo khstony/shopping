@@ -31,6 +31,11 @@ function SellerOfferCell(props: OfferCellProps) {
     navigate(`/offer/${offerId}`);
   }
 
+  const goEdit = () => {
+    localStorage.setItem("offerIdKey", offerId.toString());
+    console.log("goedit id + " + offerId);
+    navigate("/edit");
+  }
   const fetchBuyer = async() =>{
 
     try{
@@ -97,7 +102,7 @@ function SellerOfferCell(props: OfferCellProps) {
                 <div className = "cell-seller-button-section">
                     <div className = "cell-seller-button" onClick={showInfo}>주문</div>
                     <div className = "cell-seller-button" onClick = {showModal}>문의</div>
-                    <div className = "cell-seller-button">수정</div>
+                    <div className = "cell-seller-button" onClick = {goEdit}>수정</div>
                    
                 </div>
             </div>

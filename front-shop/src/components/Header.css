@@ -61,6 +61,12 @@
     border-radius: 10px;
 }
 
+.header-search-button:hover{
+    
+    background-color: #2a97e0; 
+    cursor: pointer;
+}
+
 .header-cart-button{
     width : 35px;
     height : 35px;

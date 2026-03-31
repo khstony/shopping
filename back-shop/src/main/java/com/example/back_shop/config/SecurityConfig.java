@@ -32,7 +32,8 @@ public class SecurityConfig {
 
                                 "/api/users/**",
                                 "/users/**",
-
+                                "/offers/edit/**",
+                                "/api/offers/edit/**",
                                 "/offers/upload",
                                 "/api/offers/upload",
                                 "/offers/load/**",

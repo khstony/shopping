@@ -21,7 +21,9 @@
 }
 
 .seller-main-list{
-    
+    display : flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .main-header{
@@ -69,4 +71,23 @@
     font-weight: 600;
     text-shadow: -1px 0 #000000, 0 1px #000000, 1px 0 #000000, 0 -1px #000000;
     border-radius: 10px;
+}
+
+.seller-goUpload{
+    font-size : 20px;
+    font-weight: 900;
+    width : 230px;
+    height : 40px;
+    background-color: #2AB9E0;
+    border-radius: 3px;
+    border : 3px solid #2a97e0;
+    align-items: center;
+    display : flex;
+    justify-content: center;
+}
+
+.seller-goUpload:hover{
+  transition: background-color 0.2s;
+    background-color: #2a97e0; 
+    cursor: pointer;
 }

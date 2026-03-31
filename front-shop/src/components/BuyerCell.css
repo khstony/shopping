@@ -38,6 +38,7 @@
 }
 
 .buyercell-gochat:hover{
-    background-color: #2a97e0;
-    
+    transition: background-color 0.2s;
+    background-color: #2a97e0; 
+    cursor: pointer;
 }

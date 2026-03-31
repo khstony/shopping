@@ -115,6 +115,7 @@
     justify-content: center;
     border : 2px solid #2a97e0;
     border-radius: 3px;
+    transition: background-color 0.2s;
 }
 
 .cart-cell-right-3{
@@ -140,10 +141,12 @@
     justify-content: center;
     border : 2px solid #2a97e0;
     border-radius: 3px;
+    transition: background-color 0.2s;
 }
 
 .cart-button:hover{
-    background-color: #2a97e0;
+    transition: background-color 0.2s;
+    background-color: #2a97e0; 
     cursor: pointer;
 }
 

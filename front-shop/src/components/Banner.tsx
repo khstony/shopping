@@ -8,17 +8,15 @@ import logo from "../assets/logo-transparent.png"
 
 
 
-function Banner(){
-
+function Banner({onSortChange}){
+  
   const navigate = useNavigate();
-  const gotoMain = () => {
-    navigate("/main");
-  }
+  
   return (
     <div className = "banner-wrapper">
-        <div className = "banner-button" onClick = {gotoMain}>날짜순</div>
-        <div className = "banner-button">가격순</div>
-        <div className = "banner-button">재고순</div>
+        <div className = "banner-button" onClick = {() => onSortChange("date")}>날짜순</div>
+        <div className = "banner-button" onClick = {() => onSortChange("price")}>가격순</div>
+        <div className = "banner-button" onClick = {() => onSortChange("stock")}>재고순</div>
     </div>
   )
 

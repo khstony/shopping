@@ -52,6 +52,8 @@
   font-size : 18px;
   padding-left : 5px;
   padding-right : 5px;
+  border : 2px solid #5298AC;
+  border-radius: 3px;;
 }
 
 .chat-send-button{
@@ -67,6 +69,7 @@
 }
 
 .chat-send-button:hover{
+  
   background-color: #2AB9E0;
   cursor: pointer;
 }

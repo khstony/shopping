@@ -84,7 +84,7 @@ function Upload() {
   return (
     <div className="upload-main-wrapper">
       <div className="upload-main-header">
-
+         <div className = "upload-edit-mode">상품 등록하기</div>
       </div>
       <div className="upload-seller-main-center-zone">
         <div className="upload-seller-top">
@@ -101,8 +101,8 @@ function Upload() {
             </label>
             <input type="file" name="image" id="input_file" accept="image/*" onChange={saveImgFile} ref={imageRef} />
 
-
-            <div className="upload-price-zone">
+            <div className = "upload-inputs-wrap">
+               <div className="upload-price-zone">
               <div className="upload-price-tag">가격</div>
               <input className='upload-price-input' type="number" onChange={(e) => setPrice(e.target.value)} />
               <div className="upload-price-tag">원</div>
@@ -119,6 +119,9 @@ function Upload() {
               <input className='upload-stock-input' type="number" onChange={(e) => setStock(e.target.value)} />
               <div className="upload-stock-tag">개</div>
             </div>
+            </div>
+
+           
           </div>
           <div className="upload-right-section">
             <div className="upload-title-tag">상품명</div>

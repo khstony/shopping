@@ -58,6 +58,39 @@ public class OfferService {
                                 .build();
         }
 
+        @Transactional
+        public OfferResponseDto update(Long offerId, OfferRequestDto request, MultipartFile imageFile)
+                        throws IOException {
+
+                OfferEntity offer = offerRepository.findById(offerId)
+                                .orElseThrow(() -> new IllegalArgumentException("해당 상품 없음"));
+
+                // 2. 값 수정
+                offer.setProductName(request.getProductName());
+                offer.setProductDesc(request.getProductDesc());
+                offer.setProductPrice(request.getProductPrice());
+                offer.setStock(request.getStock());
+                offer.setDiscountRate(request.getDiscountRate());
+
+                if (imageFile != null && !imageFile.isEmpty()) {
+                        String imageUrl = imageService.imageUpload(imageFile);
+                        offer.setProductImage(imageUrl);
+                }
+
+                OfferEntity updated = offerRepository.save(offer);
+
+                return OfferResponseDto.builder()
+                                .offerId(updated.getId())
+                                .productName(updated.getProductName())
+                                .productDesc(updated.getProductDesc())
+                                .productPrice(updated.getProductPrice())
+                                .stock(updated.getStock())
+                                .uploaderId(updated.getUploader().getId())
+                                .productImage(updated.getProductImage())
+                                .discountRate(updated.getDiscountRate())
+                                .build();
+        }
+
         @Value("${image-base-url}")
         private String imageUrl;
 

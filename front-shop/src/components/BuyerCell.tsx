@@ -120,7 +120,7 @@ function BuyerCell(props: ChatRoomCellProps) {
         <div className='buyer-name'>{buyerId} {nick}</div>
         <div className="buyercell-gochat" onClick={goChat}>이동</div>
       </div>
-      방 : {preRoomId} 마지막 : {lastMsg}
+      {lastMsg}
     </div>
   )
 

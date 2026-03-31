@@ -33,11 +33,11 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-
+    transition: background-color 0.2s;
     border: 2px solid #2a97e0;
     border-radius: 3px;
 
-    transition: background-color 0.2s;
+    
 }
 
 .cart-purchase-text{
@@ -45,6 +45,7 @@
 }
 
 .cart-purchase-button:hover{
+    transition: background-color 0.2s;
     background-color: #2a97e0; 
     cursor: pointer;
 }

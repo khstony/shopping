@@ -31,7 +31,7 @@ function Message(props: MessageProps) {
    <div className = "message-wrapper" onClick = {showInfo}>
     <div className = {idKey == senderId ? "message-sender-me" : "message-sender-you" }>{senderName}</div>
     <div className = {idKey == senderId ? "message-me" : "message-you" }>
-         {id} {roomId} {senderId} {message}
+         {message}
     </div>
    </div>
   )

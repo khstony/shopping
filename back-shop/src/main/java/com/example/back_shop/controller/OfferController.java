@@ -30,6 +30,16 @@ public class OfferController {
         return ResponseEntity.ok(response);
     }
 
+    @PutMapping(value = "/edit/{offerId}", consumes = "multipart/form-data")
+    public ResponseEntity<OfferResponseDto> update(
+            @PathVariable Long offerId,
+            @ModelAttribute OfferRequestDto request,
+            @RequestParam(value = "image", required = false) MultipartFile imageFile) throws IOException {
+
+        OfferResponseDto response = offerService.update(offerId, request, imageFile);
+        return ResponseEntity.ok(response);
+    }
+
     @GetMapping("/load")
     public ResponseEntity<List<OfferResponseDto>> loadAll(@RequestParam(required = false) String keyword) {
         return ResponseEntity.ok(offerService.loadAll(keyword));

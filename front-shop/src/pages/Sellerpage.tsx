@@ -13,9 +13,10 @@ const location = useLocation();
  const params = new URLSearchParams(location.search);
   const [offerList, setOfferList] = useState<Offer[]>([]);
   const idKey = localStorage.getItem("id");
+  const navigate = useNavigate();
   const keyword = params.get("keyword") || "";
   const fetchOffer = async() =>{
-
+    
     try{
       const res = await api.get(`offers/load/uploader/${idKey}`,{
         params:{
@@ -35,6 +36,10 @@ const location = useLocation();
     console.log("오퍼 패치됨", offerList);
   },[keyword]);
 
+  const goUpload = () =>{
+    navigate("/upload");
+  }
+
   return (
     <div className = "main-wrapper">
       <Header/>
@@ -47,6 +52,7 @@ const location = useLocation();
             
           />
         ))} 
+          <div className = "seller-goUpload" onClick={goUpload}>상품 등록하기</div>
         </div>
         
       </div>

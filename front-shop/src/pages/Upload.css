@@ -55,20 +55,20 @@ input[type = file] {
 
 .upload-seller-top{
     display : flex;
-    border: 1px solid blue;
+    border: 1px solid transparent;
     height : 90%;
 }
 
 .upload-seller-bottom{
     display : flex;
-    border: 1px solid blue;
+    border: 1px solid transparent;
     height : 10%;
     align-items: center;
     justify-content: center;
 }
 
 .upload-left-section{
-    border : 1px solid green;
+    border : 1px solid transparent;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -76,7 +76,7 @@ input[type = file] {
 }
 
 .upload-right-section{
-    border : 1px solid red;
+    border : 1px solid transparent;
     height : 100%;
     width : 600px;
     display : flex;
@@ -86,7 +86,7 @@ input[type = file] {
 
 .upload-image-section{
     background-color: pink;
-    border : 1px solid black;
+    border : 1px solid rgba(0, 0, 0, 0.336);
     width : 250px;
     height: 200px;
 }
@@ -142,7 +142,7 @@ input[type = file] {
 }
 
 .upload-price-zone{
-    border : 1px solid red;
+    border : 1px solid transparent;
     display : flex;
     align-items: center;
     width : 100%;
@@ -161,7 +161,7 @@ input[type = file] {
 }
 
 .upload-stock-zone{
-    border : 1px solid red;
+    border : 1px solid transparent;
     display : flex;
     align-items: center;
     margin-right : auto;
@@ -192,4 +192,14 @@ input[type = file] {
     justify-content: center;
     border : 2px solid #2a97e0;
     border-radius: 3px;
+}
+
+.upload-edit-mode{
+    font-size : 20px;
+    font-weight: 900;
+}
+
+.upload-inputs-wrap{
+    border : 1px solid rgb(180, 180, 180);
+    padding : 5px;
 }

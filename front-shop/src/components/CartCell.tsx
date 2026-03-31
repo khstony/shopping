@@ -114,8 +114,8 @@ function CartCell(props: CartCellProps) {
 
         <div className = "cart-cell-right-3">
           <div className = "cart-action-button cart-button" onClick = {cartDelete}>삭제</div>
-          <div className = "cart-action-button cart-button">버튼2</div>
-          <div className = "cart-action-button cart-button">버튼3</div>
+          
+          
         </div>
 
         
