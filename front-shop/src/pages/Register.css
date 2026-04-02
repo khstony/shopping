@@ -50,6 +50,8 @@
 }
 
 .register-button-user-type:hover{
+    transition: background-color 0.2s;
+    cursor: pointer;
     background-color: #85bbd4;
 }
 
@@ -67,7 +69,9 @@
 }
 
 .register-confirm-button:hover {
-    background-color: #2a97e0;
+    transition: background-color 0.2s;
+    background-color: #2a97e0; 
+    cursor: pointer;
 }
 
 .button-selected{

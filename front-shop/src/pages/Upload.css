@@ -94,7 +94,7 @@ input[type = file] {
 .upload-image-select-button{
     width : 120px;
     height : 35 px;
-    font-size : 18px;
+    font-size : 17px;
     background-color:#2AB9E0;
     font-weight : 700;
     margin : 20px;
@@ -104,6 +104,12 @@ input[type = file] {
     justify-content: center;
     border : 2px solid #2a97e0;
     border-radius: 3px;
+}
+
+.upload-image-select-button:hover{
+    transition: background-color 0.2s;
+    background-color: #2a97e0; 
+    cursor: pointer;
 }
 
 .upload-title-tag{
@@ -193,6 +199,14 @@ input[type = file] {
     border : 2px solid #2a97e0;
     border-radius: 3px;
 }
+
+.upload-confirm:hover{
+    
+    transition: background-color 0.2s;
+    background-color: #2a97e0; 
+    cursor: pointer;
+}
+
 
 .upload-edit-mode{
     font-size : 20px;

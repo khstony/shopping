@@ -38,7 +38,7 @@ function OfferCell(props: OfferCellProps) {
 
         />
       </div>
-      <div className={`cell-product-name`}>{productName} {stock}개 {discountRate}</div>
+      <div className={`cell-product-name`}>{productName} </div>
 
       <div className={`cell-product-price ${isDiscounted && !isSoldOut ? "font-discount-highlight" : ""} ${isSoldOut ? "sold-out-hightlight" : ""}`} >{actualPrice}원</div>
       <div className="price-row">

@@ -38,14 +38,14 @@ function Chat() {
         // 채팅방 구독
         stompClient.subscribe(`/topic/chat/room/${roomId}`, (msg) => {
           const body = JSON.parse(msg.body);
-          console.log("📩 받은 메시지:", body);
+          console.log("받은 메시지:", body);
 
           setMessages(prev => [...prev, body]);
         });
       },
 
       onStompError: (frame) => {
-        console.error("❌ STOMP 에러:", frame);
+        console.error("STOMP 에러:", frame);
       }
     });
 
@@ -65,7 +65,7 @@ function Chat() {
   // 메시지 전송
   const sendMessage = () => {
     if (!client || !client.connected) {
-      console.log("❌ 아직 연결 안됨");
+      console.log("아직 연결 안됨");
       return;
     }
 
@@ -80,7 +80,7 @@ function Chat() {
       body: JSON.stringify(message)
     });
 
-    console.log("📤 보낸 메시지:", message);
+    console.log("보낸 메시지:", message);
 
     setInput("");
   };
@@ -89,7 +89,7 @@ function Chat() {
     <div className="chat-wrapper">
       <Header />
       <div className="chat-center-zone">
-        <div className="chat-room-name">채팅 테스트</div>
+        <div className="chat-room-name">상품 문의</div>
 
         <div className="chat-msg-container">
 

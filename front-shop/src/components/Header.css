@@ -72,16 +72,37 @@
     height : 35px;
     border : 3px solid #5298AC;
     background-color: rgb(255, 255, 255);
-    margin : 15px;
+    margin-left : 10px;
     display : flex;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
 }
 
+.header-logout-button{
+    width : 35px;
+    height : 35px;
+    border : 3px solid #5298AC;
+    background-color: rgb(255, 255, 255);
+    margin-left : 10px;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+.header-logout-button:hover{
+    background-color: #4ec9c3;
+}
+
 .header-cart-icon{
     width : 28px;
     height : 28px;
+}
+
+.header-logout-icon{
+    width : 24px;
+    height : 24px;
 }
 
 .header-cart-button:hover{

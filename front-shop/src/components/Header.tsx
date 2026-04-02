@@ -7,6 +7,7 @@ import logo from "../assets/logo-transparent.png"
 import "./Header.css"
 import Logo from "../components/Logo"
 import icon from "../assets/shopping-cart (1).png"
+import logout from "../assets/logout.png"
 
 function Header(){
 
@@ -17,6 +18,10 @@ function Header(){
   const userType = localStorage.getItem("userType");
   const goCart = () => {
     navigate("/cart");
+  }
+
+  const logOut = () => {
+    navigate("/");
   }
   
   const fetchName = async () => {
@@ -65,6 +70,12 @@ function Header(){
                   alt = "carrt"/>
           </div>
           )}
+
+          <div className = "header-logout-button" onClick={logOut}>
+              <img className = "header-logout-icon"
+                  src = {logout}
+                  alt = "carrt"/>
+          </div>
      
       </div>
   )
