@@ -26,7 +26,7 @@ public class OrderService {
 
     @Transactional
     public void createOrders(List<CartEntity> carts, String address) {
-        System.out.println("오더 서비스 진입");
+        // System.out.println("오더 서비스 진입");
         for (CartEntity cart : carts) {
 
             OfferEntity offer = cart.getOfferId();
@@ -47,9 +47,9 @@ public class OrderService {
 
     @Transactional
     public List<OrderResponseDto> loadOrders(Long offerId) {
-        System.out.println("load order 시작");
+        // System.out.println("load order 시작");
         List<OrderEntity> orders = orderRepository.findByOfferId(offerId);
-        System.out.println("load order 진입");
+        // System.out.println("load order 진입");
         return orders.stream()
                 .map(order -> new OrderResponseDto(
                         order.getId(),
@@ -65,10 +65,10 @@ public class OrderService {
 
     @Transactional
     public OrderResponseDto editOrder(OrderRequestDto request) {
-        System.out.println("orderedit 진입" + request.getId());
+        // System.out.println("orderedit 진입" + request.getId());
         OrderEntity order = orderRepository.findById(request.getId())
                 .orElseThrow(() -> new IllegalArgumentException("해당 주문 무효"));
-        System.out.println("에딧 시작");
+        // System.out.println("에딧 시작");
         order.setStatus(request.getStatus());
         return OrderResponseDto.builder()
                 .address(order.getAddress())

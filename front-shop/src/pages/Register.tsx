@@ -36,10 +36,10 @@ const registerConfirm = async () => {
     });
 
     alert("회원가입을 완료했습니다");
-    console.log(response);
+    //console.log(response);
     navigate("/");
   } catch(error){
-    console.error(error.response?.data);
+    //console.error(error.response?.data);
     alert(error.response?.data.message)
   }
 };

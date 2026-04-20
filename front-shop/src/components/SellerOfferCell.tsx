@@ -33,7 +33,7 @@ function SellerOfferCell(props: OfferCellProps) {
 
   const goEdit = () => {
     localStorage.setItem("offerIdKey", offerId.toString());
-    console.log("goedit id + " + offerId);
+    //console.log("goedit id + " + offerId);
     navigate("/edit");
   }
   const fetchBuyer = async() =>{
@@ -42,14 +42,14 @@ function SellerOfferCell(props: OfferCellProps) {
       const res = await api.get(`/chatRoom/chat/findRoomsForSeller/${offerId}`);
       setBuyers(res.data);
       
-      console.log("고객 패치됨", res.data);
+      //console.log("고객 패치됨", res.data);
     } catch (err){
-      console.error("에러", err);
+      //console.error("에러", err);
     }
     
   }
     const showModal = () =>{
-    console.log("modal toggled");
+    //console.log("modal toggled");
     fetchBuyer();
     setModal(!modal);
   }

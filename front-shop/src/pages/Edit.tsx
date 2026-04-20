@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { testshop } from "../testdata/testshop";
+
 import type { Offer } from "../types/offer"
 import api from "../api/axiosInstance";
-import SellerOfferCell from "../components/SellerOfferCell"
+
 import "./Upload.css"
 import { useNavigate } from 'react-router-dom';
-
+import Logo from "../components/Logo";
 function Edit() {
 
     const [offerList, setOfferList] = useState<Offer | null>(null);
@@ -25,8 +25,8 @@ function Edit() {
     const fetchOffer = async () => {
         try {
             const response = await api.get(`/offers/load/single/${originalId}`)
-            console.log("after herre + ", originalId);
-            console.log("result = ", response.data);
+            //console.log("after herre + ", originalId);
+            //console.log("result = ", response.data);
             setOfferList(response.data);
 
             setName(response.data.productName || "");
@@ -38,12 +38,12 @@ function Edit() {
 
 
         } catch (error) {
-            console.log(error);
+            //console.log(error);
         }
     }
     useEffect(() => {
         fetchOffer();
-        console.log("기존 오퍼의 정보를 불러옴, ", offerList);
+        //console.log("기존 오퍼의 정보를 불러옴, ", offerList);
     }, []);
 
     const saveImgFile = () => {
@@ -52,19 +52,22 @@ function Edit() {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onloadend = () => {
-            setPreviewImage(reader.result);
-        }
+            if (typeof reader.result === "string") {
+                setPreviewImage(reader.result);
+            }
+        };
 
     }
 
 
 
     const editOffer = async () => {
-        console.log("clik");
+        //console.log("clik");
         if (!idKey) {
             alert("로그인이 필요합니다");
             return;
         }
+        const discountNumber = Number(discount || 0);
 
 
         const formData = new FormData();
@@ -72,8 +75,9 @@ function Edit() {
         formData.append("productDesc", desc);
         formData.append("productPrice", price);
         formData.append("stock", stock);
-        formData.append("discountRate", discount);
+        formData.append("discountRate", String(discountNumber));
         formData.append("uploader", idKey);
+
 
         if (imageRef.current && imageRef.current.files.length > 0) {
             formData.append("image", imageRef.current.files[0]);
@@ -94,10 +98,10 @@ function Edit() {
                 return;
             }
             alert("상품을 수정했습니다");
-            console.log("수정 성공", res.data);
+            //console.log("수정 성공", res.data);
             navigate("/seller");
         } catch (err) {
-            console.error("수정 실패", err);
+            //console.error("수정 실패", err);
         }
     }
 
@@ -105,6 +109,7 @@ function Edit() {
     return (
         <div className="upload-main-wrapper">
             <div className="upload-main-header">
+                <Logo />
                 <div className="upload-edit-mode">상품 내용 수정</div>
             </div>
             <div className="upload-seller-main-center-zone">

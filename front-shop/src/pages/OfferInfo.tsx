@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import "./OfferInfo.css"
 import type { Offer } from "../types/offer";
-import { testOfferDetail } from '../testdata/testOfferDetail';
+
 import api from "../api/axiosInstance";
 import Logo from "../components/Logo";
 import Header from "../components/Header";
@@ -21,9 +21,9 @@ function OfferInfo() {
         try {
             const response = await api.get(`/offers/load/single/${id}`);
             setOfferDetail(response.data);
-            console.log(response.data);
+            //console.log(response.data);
         } catch (error) {
-            console.error("info 로딩 중에러", error);
+            //console.error("info 로딩 중에러", error);
         }
 
     }
@@ -36,22 +36,22 @@ function OfferInfo() {
             });
 
             localStorage.setItem("roomId", response.data);
-            console.log("new room id : "+ response.data);
+            //console.log("new room id : "+ response.data);
             navigate(`/chat`);
         }catch(error){
-            console.log("방이 없으므로 생성합니다" + offerDetail?.uploaderId);
+            //console.log("방이 없으므로 생성합니다" + offerDetail?.uploaderId);
             try{
                 const response = await api.post(`/chatRoom/chat/create`,{
                     buyerId : idKey,
                     sellerId : offerDetail?.uploaderId,
                     offerId : offerDetail?.offerId
                 });
-                console.log("new created room id : " + response.data.id);
+                //console.log("new created room id : " + response.data.id);
                  localStorage.setItem("roomId",  response.data.id);
                  navigate(`/chat`);
                
             }catch(error: any){
-                console.log(error);
+                //console.log(error);
             }
             
         }
@@ -64,15 +64,15 @@ function OfferInfo() {
         try {
             const res = await api.get(`/order/load/${id}`)
             setOrderList(res.data);
-            console.log(res.data);
+            //console.log(res.data);
         } catch (error) {
-            console.log("오더 에러", error);
+            //console.log("오더 에러", error);
         }
     }
 
     const addCart = async () => {
-        console.log("오퍼" + offerDetail?.offerId);
-        console.log("판매상" + offerDetail?.uploaderId);
+        //console.log("오퍼" + offerDetail?.offerId);
+        //console.log("판매상" + offerDetail?.uploaderId);
 
         try {
             const response = await api.post("/cart/add", {
@@ -81,10 +81,10 @@ function OfferInfo() {
                 quantity: 1
             });
 
-            console.log(response);
+           //console.log(response);
             alert("장바구니에 상품을 추가했습니다");
         } catch (error) {
-            console.error(error.response?.data);
+           //console.error(error.response?.data);
             alert(error.response?.data.message)
         }
     };

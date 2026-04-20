@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import "./Chat.css";
 import send from "../assets/send.png"
 import api from "../api/axiosInstance";
-import Message from "../components/Message";
+import MessageComponent from "../components/MessageComponent";
 
 function Chat() {
 
@@ -19,21 +19,21 @@ function Chat() {
       try{
         const response = await api.get(`/chatRoom/chat/load/${roomId}`);
         setMessages(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       }catch(error){
-        console.error("메시지 패치 에러", error);
+        //console.error("메시지 패치 에러", error);
       }
   }
 
   useEffect(() => {
-    const socket = new SockJS("http://localhost:8080/ws/chat");
+    const socket = new SockJS(`${import.meta.env.VITE_WS_URL}/ws/chat`);
 
     const stompClient = new Client({
       webSocketFactory: () => socket,
       reconnectDelay: 5000,
 
       onConnect: () => {
-        console.log("WebSocket 연결됨");
+        //console.log("WebSocket 연결됨");
 
         // 채팅방 구독
         stompClient.subscribe(`/topic/chat/room/${roomId}`, (msg) => {
@@ -45,7 +45,7 @@ function Chat() {
       },
 
       onStompError: (frame) => {
-        console.error("STOMP 에러:", frame);
+        //console.error("STOMP 에러:", frame);
       }
     });
 
@@ -65,7 +65,7 @@ function Chat() {
   // 메시지 전송
   const sendMessage = () => {
     if (!client || !client.connected) {
-      console.log("아직 연결 안됨");
+      //console.log("아직 연결 안됨");
       return;
     }
 
@@ -80,7 +80,7 @@ function Chat() {
       body: JSON.stringify(message)
     });
 
-    console.log("보낸 메시지:", message);
+    //console.log("보낸 메시지:", message);
 
     setInput("");
   };
@@ -94,7 +94,7 @@ function Chat() {
         <div className="chat-msg-container">
 
           {messages.map((msg) => (
-            <Message
+            <MessageComponent
               key = {msg.key}
               {...msg}
             />

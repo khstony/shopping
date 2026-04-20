@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import {testshop} from "../testdata/testshop";
+
 import type { Offer } from "../types/offer"
 import SellerOfferCell from "../components/SellerOfferCell"
 import "./Sellerpage.css";
@@ -15,7 +15,7 @@ const location = useLocation();
   const idKey = localStorage.getItem("id");
   const navigate = useNavigate();
   const keyword = params.get("keyword") || "";
-  const fetchOffer = async() =>{
+  const fetchOffer = async(keyword: string) =>{
     
     try{
       const res = await api.get(`offers/load/uploader/${idKey}`,{
@@ -24,16 +24,16 @@ const location = useLocation();
         }
       });
       setOfferList(res.data);
-      console.log("오퍼 패치됨", res.data);
+      //console.log("오퍼 패치됨", res.data);
     } catch (err){
-      console.error("에러", err);
+      //console.error("에러", err);
     }
     
   }
 
   useEffect(() => {
     fetchOffer(keyword);
-    console.log("오퍼 패치됨", offerList);
+    //console.log("오퍼 패치됨", offerList);
   },[keyword]);
 
   const goUpload = () =>{

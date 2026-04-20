@@ -31,7 +31,7 @@ function CartCell(props: CartCellProps) {
   }
 
   const cartPlus = async () =>{
-    console.log("플러스");
+    //console.log("플러스");
     try{
       const response = await api.put("/cart/addOne",{
         id : Id,
@@ -39,8 +39,8 @@ function CartCell(props: CartCellProps) {
         offerId : offerId,
         quantity : quantity
       });
-      console.log("플러스 수행");
-      console.log(response);
+     // console.log("플러스 수행");
+      //console.log(response);
       fetchOffer();
     }catch(error){
       console.error(error.response.data);
@@ -49,7 +49,7 @@ function CartCell(props: CartCellProps) {
   }
 
   const cartMinus = async () =>{
-    console.log("마이너스");
+    //console.log("마이너스");
     try{
       const response = await api.put("/cart/minusOne",{
         id : Id,
@@ -57,25 +57,25 @@ function CartCell(props: CartCellProps) {
         offerId : offerId,
         quantity : quantity
       });
-      console.log("마이너스 수행");
-      console.log(response);
+      //console.log("마이너스 수행");
+      //console.log(response);
       fetchOffer();
     }catch(error){
-      console.error(error.response.data);
+     // console.error(error.response.data);
       alert(error?.response?.data.message);
     }
   }
 
   const cartDelete = async () =>{
-    console.log("삭제");
+    //console.log("삭제");
     try{
       const response = await api.delete(`/cart/delete/${Id}`);
-      console.log("삭제 수행");
+      //console.log("삭제 수행");
       alert("상품을 삭제했습니다.");
-      console.log(response);
+     // console.log(response);
       fetchOffer();
     }catch(error){
-      console.error(error.response.data);
+      //console.error(error.response.data);
       alert(error?.response?.data.message);
     }
   }

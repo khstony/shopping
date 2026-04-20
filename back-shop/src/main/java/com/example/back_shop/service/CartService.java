@@ -59,8 +59,8 @@ public class CartService {
 
         @Transactional
         public CartResponseDto addOne(CartUpdateRequestDto request) {
-                System.out.println("로그");
-                System.out.println(request);
+                // System.out.println("로그");
+                // System.out.println(request);
                 OfferEntity offer = offerRepository.findById(request.getOfferId())
                                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
@@ -86,8 +86,8 @@ public class CartService {
 
         @Transactional
         public CartResponseDto minusOne(CartUpdateRequestDto request) {
-                System.out.println("로그");
-                System.out.println(request);
+                // System.out.println("로그");
+                // System.out.println(request);
                 OfferEntity offer = offerRepository.findById(request.getOfferId())
                                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
@@ -117,11 +117,11 @@ public class CartService {
         @Transactional
         public List<CartResponseDto> loadCart(Long ownerId) {
 
-                System.out.println("서비스진입");
+                // System.out.println("서비스진입");
                 UserEntity user = new UserEntity();
                 user.setId(ownerId);
-                System.out.println("검사" + user.getId());
-                System.out.println("검사" + cartRepository.findByOwnerId(user));
+                // System.out.println("검사" + user.getId());
+                // System.out.println("검사" + cartRepository.findByOwnerId(user));
                 List<CartEntity> carts = cartRepository.findByOwnerId(user);
 
                 return carts.stream()
@@ -148,7 +148,7 @@ public class CartService {
 
         @Transactional
         public void cartPurchase(Long userId) {
-                System.out.println("구매서비스 진입");
+                // System.out.println("구매서비스 진입");
 
                 UserEntity user = userRepository.findById(userId)
                                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다."));
@@ -175,7 +175,7 @@ public class CartService {
 
                         offer.setStock(offer.getStock() - cart.getQuantity());
                 }
-                System.out.println("주소" + user.getAddress());
+                // System.out.println("주소" + user.getAddress());
                 orderService.createOrders(carts, user.getAddress());
 
                 // 장바구니 전체 삭제

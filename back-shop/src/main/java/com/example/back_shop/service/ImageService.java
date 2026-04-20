@@ -23,6 +23,7 @@ public class ImageService {
         Files.createDirectories(savePath.getParent());
         file.transferTo(savePath.toFile());
 
-        return "/images/" + fileName;
+        // return "/images/" + fileName;
+        return "/" + fileName;
     }
 }

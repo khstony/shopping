@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { testshop } from "../testdata/testshop";
+
 import type { Offer } from "../types/offer"
 import api from "../api/axiosInstance";
-import SellerOfferCell from "../components/SellerOfferCell"
+
 import "./Upload.css"
 import { useNavigate } from 'react-router-dom';
+import Logo from "../components/Logo";
 
 function Upload() {
 
@@ -21,14 +22,8 @@ function Upload() {
   const navigate = useNavigate();
 
 
-  const fetchOffer = () => {
-    setOfferList(testshop);
-  }
 
-  useEffect(() => {
-    fetchOffer();
-    console.log("오퍼 패치됨", offerList);
-  }, []);
+
 
   const saveImgFile = () => {
     if (!imageRef.current || imageRef.current?.files.length === 0) return;
@@ -36,7 +31,9 @@ function Upload() {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      setPreviewImage(reader.result);
+      if (typeof reader.result === "string") {
+        setPreviewImage(reader.result);
+      }
     }
 
   }
@@ -44,7 +41,7 @@ function Upload() {
 
 
   const uploadOffer = async () => {
-    console.log("clik");
+    //console.log("clik");
     if (!idKey) {
       alert("로그인이 필요합니다");
       return;
@@ -73,10 +70,10 @@ function Upload() {
     try {
       const res = await api.post("/offers/upload", formData);
       alert("상품을 등록했습니다");
-      console.log("업로드 성공", res.data);
+      //console.log("업로드 성공", res.data);
       navigate("/seller");
     } catch (err) {
-      console.error("업로드 실패", err);
+      //console.error("업로드 실패", err);
     }
   }
 
@@ -84,6 +81,7 @@ function Upload() {
   return (
     <div className="upload-main-wrapper">
       <div className="upload-main-header">
+        <Logo />
         <div className="upload-edit-mode">상품 등록하기</div>
       </div>
       <div className="upload-seller-main-center-zone">

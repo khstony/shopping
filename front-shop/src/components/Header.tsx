@@ -29,9 +29,9 @@ function Header(){
     try {
       const res = await api.get(`/users/nickname/${idKey}`);
       setNick(res.data);
-      console.log("닉네임", res.data);
+      //console.log("닉네임", res.data);
     } catch (err) {
-      console.error("닉네임에러 : ", err);
+      //console.error("닉네임에러 : ", err);
     }
 
     
@@ -43,7 +43,7 @@ function Header(){
 
 
   const search = () => {
-    console.log("검색버튼 클릭" + searchWord);
+    //console.log("검색버튼 클릭" + searchWord);
 
     if(userType === "BUYER"){
       navigate(`/main?keyword=${encodeURIComponent(searchWord)}`);

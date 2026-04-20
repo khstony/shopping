@@ -1,12 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "./Cart.css";
-import { testshop } from "../testdata/testshop";
-import type { Offer } from "../types/offer"
+
+
 import CartCell from "../components/CartCell";
 import api from "../api/axiosInstance";
-import logo from "../assets/logo-transparent.png"
-import { useNavigate } from 'react-router-dom';
-import Logo from "../components/Logo";
+
 import Header from '../components/Header';
 
 function Cart() {
@@ -24,17 +22,17 @@ function Cart() {
     try {
       const res = await api.get(`/cart/view/${id}`);
       setCartList(res.data);
-      console.log("아디" + id);
-      console.log("장바구니 패치됨", res.data);
+      //console.log("아디" + id);
+      //console.log("장바구니 패치됨", res.data);
     } catch (err) {
-      console.error("에러", err);
+      //console.error("에러", err);
     }
 
   }
 
   useEffect(() => {
     fetchOffer();
-    console.log("장바구니 패치됨", cartList);
+    //console.log("장바구니 패치됨", cartList);
   }, []);
 
   const purchase = async () => {
@@ -43,8 +41,8 @@ function Cart() {
       alert("구매를 완료했습니다.");
       fetchOffer();
     } catch (err) {
-      console.error("에러 : ", err);
-      alert(error.res?.data.message)
+      //console.error("에러 : ", err);
+      alert(err.res?.data.message)
 
     }
   }

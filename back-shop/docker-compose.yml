@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: shop
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  backend:
+    build: .
+    container_name: spring-backend
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      - DB_URL=jdbc:mysql://mysql:3306/shop?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+      - DB_USERNAME=root
+      - DB_PASSWORD=1234
+      - IMAGE_BASE_URL=http://13.238.180.77:8080
+    volumes:
+      - ./upload:/app/upload
+
+volumes:
+  mysql-data:

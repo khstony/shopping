@@ -6,7 +6,9 @@ import "./OrderCell.css";
 import arrow from "../assets/arrow.png"
 
 
-type OrderCellProps = Order;
+type OrderCellProps = Order & {
+  fetchOrder: () => void;
+};
 
 function OrderCell(props: OrderCellProps) {
     const {
@@ -34,7 +36,7 @@ function OrderCell(props: OrderCellProps) {
     
 
     const statusSwitch = async() =>{
-        console.log(id);
+        //console.log(id);
         const newStatus = statusChanger(status);
 
         try{
@@ -48,11 +50,11 @@ function OrderCell(props: OrderCellProps) {
                 offerId : offerId,
                 sellerId : sellerId,
             });
-            console.log("order edidte")
+            //console.log("order edidte")
             fetchOrder();
-            console.log(response)
+            //console.log(response)
         }catch(error){
-      console.error(error.response.data);
+      //console.error(error.response.data);
       alert(error?.response?.data.message);
     }
     }
@@ -71,7 +73,7 @@ function OrderCell(props: OrderCellProps) {
     return (
         <div className="order-cell-wrapper">
             <div className={`order-cell-top`}>
-                <div className={`order-status-tag ${statusMap[status]}`}>{statusMap[status]}</div>
+                <div className={`order-status-tag ${statusMap[String(status)]}`}>{statusMap[String(status)]}</div>
                 <div className = "order-status-switch-button" onClick={statusSwitch}>
                     <img
                         className = "order-arrow-icon"
@@ -80,7 +82,7 @@ function OrderCell(props: OrderCellProps) {
                     />
                  
                 </div>
-                <div className="order-date-tag">주문 일자 : {orderDate}</div>
+                <div className="order-date-tag">주문 일자 : {orderDate.toLocaleString()}</div>
             </div>
 
             <div className='order-cell-center'>

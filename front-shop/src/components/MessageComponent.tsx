@@ -7,7 +7,7 @@ import "./Message.css";
 
 type MessageProps = Message;
 
-function Message(props: MessageProps) {
+function MessageComponent(props: MessageProps) {
   const {
     id,
     roomId,
@@ -22,19 +22,19 @@ function Message(props: MessageProps) {
   const idKey = localStorage.getItem("id");
 
   const showInfo = () =>{
-    console.log(senderName);
+    //console.log(senderName);
   }
 
  
 
   return (
    <div className = "message-wrapper" onClick = {showInfo}>
-    <div className = {idKey == senderId ? "message-sender-me" : "message-sender-you" }>{senderName}</div>
-    <div className = {idKey == senderId ? "message-me" : "message-you" }>
+    <div className = {idKey == String(senderId) ? "message-sender-me" : "message-sender-you" }>{senderName}</div>
+    <div className = {idKey == String(senderId) ? "message-me" : "message-you" }>
          {message}
     </div>
    </div>
   )
 
 }
-export default Message 
+export default MessageComponent 

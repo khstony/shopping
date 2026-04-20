@@ -1,13 +1,13 @@
 import React, { useEffect, useState, useRef } from 'react';
 import "./Mainpage.css";
 
-import { testshop } from "../testdata/testshop";
+
 import type { Offer } from "../types/offer"
 import OfferCell from "../components/OfferCell";
 import api from "../api/axiosInstance";
-import logo from "../assets/logo-transparent.png"
+
 import { useNavigate, useLocation } from 'react-router-dom';
-import Logo from "../components/Logo";
+
 import Banner from '../components/Banner';
 import Header from '../components/Header';
 
@@ -25,7 +25,7 @@ function MainPage() {
   const handleSort = (type) => {
     let sorted = [...offerList];
     let asc = true;
-    console.log("sorting...");
+    //console.log("sorting...");
     if(sortType === type){
         asc = !isAsc
     }
@@ -35,23 +35,23 @@ function MainPage() {
     if (type === "price") {
       sorted.sort((a, b) => asc ? a.productPrice - b.productPrice : b.productPrice - a.productPrice);
   
-      console.log(asc);
+      //console.log(asc);
     }
 
     else if (type === "stock") {
       sorted.sort((a, b) => asc? a.stock - b.stock :  b.stock - a.stock);
-      console.log(asc);
+      //console.log(asc);
     }
     else if (type === "date") {
       sorted.sort((a, b) => asc?  a.offerId - b.offerId : b.offerId - a.offerId);
-      console.log(asc);
+      //console.log(asc);
     }
     setSortType(type);
     setIsAsc(asc);
     setSortedOffers(sorted);
   }
 
-  const fetchOffer = async () => {
+  const fetchOffer = async (keyword: string) => {
 
     try {
       const res = await api.get("offers/load", {
@@ -62,16 +62,16 @@ function MainPage() {
       setOfferList(res.data);
       setSortedOffers(res.data);
 
-      console.log("오퍼 패치됨", res.data);
+      //console.log("오퍼 패치됨", res.data);
     } catch (err) {
-      console.error("에러", err);
+      //console.error("에러", err);
     }
 
   }
 
   useEffect(() => {
     fetchOffer(keyword);
-    console.log("오퍼 패치됨", offerList);
+    //console.log("오퍼 패치됨", offerList);
   }, [keyword]);
 
 

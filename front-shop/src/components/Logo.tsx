@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import api from "../api/axiosInstance";
 import type { Offer } from "../types/offer"
-import "./logo.css"
+import "./Logo.css"
 import logo from "../assets/logo-transparent.png"
 
 
@@ -14,9 +14,9 @@ function Logo() {
     const [nick, setNick] = useState("");
   const navigate = useNavigate();
   const gotoMain = () => {
-    console.log("btn cliked");
-    console.log(userType);
-    console.log(nick);
+    //console.log("btn cliked");
+    //console.log(userType);
+    //console.log(nick);
     if (userType == "BUYER")
       navigate("/main");
     else if (userType == "SELLER") {
@@ -29,9 +29,9 @@ function Logo() {
     try {
       const res = await api.get(`/users/nickname/${idKey}`);
       setNick(res.data);
-      console.log("닉네임", res.data);
+     // console.log("닉네임", res.data);
     } catch (err) {
-      console.error("닉네임에러 : ", err);
+      //console.error("닉네임에러 : ", err);
     }
 
     

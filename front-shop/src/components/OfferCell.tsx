@@ -10,7 +10,7 @@ type OfferCellProps = Offer;
 function OfferCell(props: OfferCellProps) {
   const {
     offerId,
-    uploader,
+    uploaderId,
     productName,
     productImage,
     productDesc,

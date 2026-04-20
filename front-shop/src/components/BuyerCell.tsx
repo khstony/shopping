@@ -24,9 +24,9 @@ function BuyerCell(props: ChatRoomCellProps) {
     try {
       const res = await api.get(`/users/nickname/${buyerId}`);
       setNick(res.data);
-      console.log("닉네임", res.data);
+      //console.log("닉네임", res.data);
     } catch (err) {
-      console.error("에러", err);
+      //console.error("에러", err);
     }
 
   }
@@ -41,21 +41,21 @@ function BuyerCell(props: ChatRoomCellProps) {
       });
 
       setRoomId(response.data.id);
-      console.log("저장된 방 아이디 : " + response.data.id);
+      //console.log("저장된 방 아이디 : " + response.data.id);
     } catch (error) {
-      console.log("방이 없으므로 생성합니다" + buyerId);
+      //console.log("방이 없으므로 생성합니다" + buyerId);
       try {
         const response = await api.post(`/chatRoom/chat/create`, {
           buyerId: buyerId,
           sellerId: sellerId,
           offerId: offerId
         });
-        console.log("new created room id : " + response.data.id);
+        //console.log("new created room id : " + response.data.id);
         setRoomId(response.data.id);
 
 
       } catch (error: any) {
-        console.log(error);
+        //console.log(error);
       }
 
     }
@@ -68,7 +68,7 @@ function BuyerCell(props: ChatRoomCellProps) {
       const response = await api.get(`/chatRoom/chat/room/topmsg/${preRoomId}`);
       setLastMsg(response.data);
     } catch (error) {
-      console.log(error);
+      //console.log(error);
     }
   }
 
@@ -91,23 +91,23 @@ function BuyerCell(props: ChatRoomCellProps) {
       });
 
       localStorage.setItem("roomId", response.data);
-      console.log("new room id : " + response.data);
-      console.log("방이 이미 있었습니다");
+      //console.log("new room id : " + response.data);
+      //console.log("방이 이미 있었습니다");
       navigate(`/chat`);
     } catch (error) {
-      console.log("방이 없으므로 생성합니다" + buyerId);
+      //console.log("방이 없으므로 생성합니다" + buyerId);
       try {
         const response = await api.post(`/chatRoom/chat/create`, {
           buyerId: buyerId,
           sellerId: sellerId,
           offerId: offerId
         });
-        console.log("new created room id : " + response.data.id);
+        //console.log("new created room id : " + response.data.id);
         localStorage.setItem("roomId", response.data.id);
         navigate(`/chat`);
 
       } catch (error: any) {
-        console.log(error);
+        //console.log(error);
       }
 
     }
