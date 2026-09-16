@@ -29,8 +29,8 @@ function Login() {
       localStorage.setItem("token", token);
       localStorage.setItem("userId", idLogin); //입력한 문자열 id
       localStorage.setItem("id", idKey); //db넘버
-      console.log("아이디넘버"+idKey);
-      console.log("응답"+response);
+      //console.log("아이디넘버"+idKey);
+      //console.log("응답"+response);
       if(response.data.userType == "BUYER"){
         localStorage.setItem("userType", userType);
           navigate("/main");
@@ -46,7 +46,7 @@ function Login() {
       alert("로그인");
       
     } catch (error) {
-      console.error(error.response?.data);
+      //console.error(error.response?.data);
       alert(error.response?.data.message)
     }
   };

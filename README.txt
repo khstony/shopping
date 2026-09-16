@@ -1,5 +1,5 @@
-1. 접속
-ssh -i "C:\Users\PC\Downloads\shop_key.pem" ubuntu@13.238.180.77
+1. 접속13.238.68.195
+ssh -i "C:\Users\PC\Downloads\shop_key.pem" ubuntu@13.238.68.195
 도커on
 sudo systemctl start docker
 sudo systemctl enable docker
