@@ -18,6 +18,11 @@
 
 # 2. 코드 수정 후 재배포
 
+
+SSH 접속:
+
+ssh -i "C:\Users\PC\Downloads\shop_key.pem" ubuntu@13.238.68.195
+
 ## Backend
 
 ### Local
